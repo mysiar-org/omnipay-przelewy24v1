@@ -6,7 +6,6 @@ use Omnipay\Przelewy24\Gateway;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 use Omnipay\Tests\GatewayTestCase;
 
-
 class GatewayTest extends GatewayTestCase
 {
     /**
