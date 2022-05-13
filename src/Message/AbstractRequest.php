@@ -63,6 +63,16 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('channel', $value);
     }
 
+    public function getLanguage()
+    {
+        return $this->getParameter('language');
+    }
+
+    public function setLanguage($value): self
+    {
+        return $this->setParameter('language', $value);
+    }
+
     public function getEndpoint(): string
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
@@ -83,7 +93,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
                     base64_encode(sprintf('%s:%s', $this->getMerchantId(), $this->getReportKey()))
                 ),
             ],
-            empty($data) ? null : json_encode($data)
+            empty($data) ? null : json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
         );
     }
 }

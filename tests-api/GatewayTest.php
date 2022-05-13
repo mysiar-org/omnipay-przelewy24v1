@@ -19,6 +19,7 @@ class GatewayTest extends TestCase
             'posId' => getenv('P24V1_POS_ID'),
             'crc' => getenv('P24V1_CRC'),
             'reportKey' => getenv('P24V1_REPORT_KEY'),
+            'language' => getenv('P24V1_LANGUAGE'),
             'testMode' => true,
         ];
 

@@ -8,3 +8,4 @@
 
 * /api/v1/testAccess
 * /api/v1/payment/methods
+* /api/v1/transaction/register
