@@ -21,14 +21,17 @@
   ],
   "autoload": {
     "psr-4": {
-      "Omnipay\\Przelewy24\\V1\\": "src/"
+      "Omnipay\\Przelewy24\\": "src/"
     }
   },
   "require": {
-    "omnipay/common": "^3"
+    "omnipay/common": "^3",
+    "ext-json": "*"
   },
   "require-dev": {
-    "omnipay/tests": "^3"
+    "omnipay/tests": "^3",
+    "symplify/easy-coding-standard": "^10.2",
+    "symfony/var-dumper": "^5.4"
   },
   "scripts": {
     "test": "phpunit"
