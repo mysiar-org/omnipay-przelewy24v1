@@ -6,4 +6,5 @@
 
 ## API endpoints implemented
 
-* testAccess
+* /api/v1/testAccess
+* /api/v1/payment/methods
