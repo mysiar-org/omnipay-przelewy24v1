@@ -1,0 +1,36 @@
+{
+  "name": "mysiar/omnipay-przelewy24v1",
+  "type": "library",
+  "description": "Przelewy24 API v1 driver for the Omnipay payment processing library",
+  "keywords": [
+    "przelewy24",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "transfer"
+  ],
+  "homepage": "https://github.com/mysiar/omnipay-przelewy24v1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Piotr Synowiec",
+      "email": "psynowiec@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Przelewy24\\V1\\": "src/"
+    }
+  },
+  "require": {
+    "omnipay/common": "^3"
+  },
+  "require-dev": {
+    "omnipay/tests": "^3"
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}
