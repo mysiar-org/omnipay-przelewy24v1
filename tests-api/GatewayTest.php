@@ -26,7 +26,7 @@ class GatewayTest extends TestCase
         $this->gateway->initialize($settings);
     }
 
-    public function test(): void
+    public function testAccess(): void
     {
         $response = $this->gateway->testAccess()->send();
         $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
@@ -39,5 +39,14 @@ class GatewayTest extends TestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertSame(AbstractResponse::HTTP_UNAUTHORIZED, $response->getCode());
         $this->assertSame("Incorrect authentication", $response->getMessage());
+    }
+
+    public function testMethods(): void
+    {
+        $response = $this->gateway->methods()->send();
+        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame('', $response->getMessage());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertGreaterThan(0, count($response->getMethods()));
     }
 }

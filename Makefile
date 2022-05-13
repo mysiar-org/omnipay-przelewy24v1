@@ -1,5 +1,5 @@
 cs-check:
-	./vendor/bin/ecs check src tests
+	./vendor/bin/ecs check src tests tests-api
 
 cs-fix:
-	./vendor/bin/ecs check src tests --fix
+	./vendor/bin/ecs check src tests tests-api --fix

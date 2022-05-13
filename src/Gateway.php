@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Omnipay\Przelewy24;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 
 class Gateway extends AbstractGateway
@@ -90,8 +92,21 @@ class Gateway extends AbstractGateway
         return $this->setParameter('channel', $value);
     }
 
-    public function testAccess()
+    /**
+     * @return AbstractRequest|TestAccessRequest
+     */
+    public function testAccess(): TestAccessRequest
     {
         return $this->createRequest(TestAccessRequest::class, []);
+    }
+
+    /**
+     * @return AbstractRequest|MethodsRequest
+     */
+    public function methods(string $lang = 'en'): MethodsRequest
+    {
+        return $this->createRequest(MethodsRequest::class, [
+            'lang' => $lang,
+        ]);
     }
 }
