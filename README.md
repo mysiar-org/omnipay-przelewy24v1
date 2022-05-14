@@ -13,3 +13,75 @@
 | /api/v1/transaction/register | purchase          |
 | /api/v1/transaction/verify   | completePurchase  |
 
+## Install
+
+This gateway can be installed with [Composer](https://getcomposer.org/):
+
+``` bash
+$ composer require mysiar/omnipay-przelewy24v1
+```
+
+## Usage
+
+The following gateways are provided by this package:
+
+* Przelewy24
+
+## Example
+
+```php
+
+require_once  __DIR__ . '/vendor/autoload.php';
+
+use Omnipay\Omnipay;
+
+/** @var \Omnipay\Przelewy24\Gateway $gateway */
+$gateway = Omnipay::create('Przelewy24');
+
+$gateway->initialize([
+    'merchantId' => 'YOUR MERCHANT ID HERE',
+    'posId'      => 'YOUR POS ID HERE',
+    'crc'        => 'YOUR CRC KEY HERE',
+    'reportKey'  => 'YOUR REPORT KEY HERE'
+    'testMode'   => true,
+]);
+
+$params = [
+    'sessionId' => 2327398739,
+    'amount' => 12.34,
+    'currency' => 'PLN',
+    'description' => 'Payment test',
+    'email' => 'franek@dolas.com',
+    'country' => 'PL',
+    'returnUrl' => 'www.your-domain.pl/return_here',
+    'notifyUrl' => 'www.your-domain.pl/notify_here',
+];
+
+$response = $gateway->purchase($params)->send();
+```
+
+For more exmples check `tests-api/GatewayTest.php`
+
+Optionally you can specify the payment channels.
+
+```php
+$gateway->initialize([
+    //[...]
+    'channel' => Gateway::P24_CHANNEL_CC,
+]);
+
+// or
+$gateway->setChannel(Gateway::P24_CHANNEL_CC); 
+```
+
+Optionally you can specify language (default: en).
+
+```php
+$gateway->initialize([
+    //[...]
+    'language' => 'pl',
+]);
+
+// or
+$gateway->setLanguage('pl'); 
+```
