@@ -37,6 +37,6 @@ class MethodsRequest extends AbstractRequest
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response = new MethodsResponse($this, $responseData, $this->getEndpoint());
+        return $this->response = new MethodsResponse($this, $responseData);
     }
 }

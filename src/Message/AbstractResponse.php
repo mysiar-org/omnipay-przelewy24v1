@@ -16,23 +16,11 @@ abstract class AbstractResponse extends BaseAbstractResponse
     public const HTTP_UNAUTHORIZED = 401;
 
     /**
-     * @var string
-     */
-    protected $endpoint;
-
-    /**
      * @param string[] $data
-     * @param string $endpoint
      */
-    public function __construct(RequestInterface $request, $data, $endpoint)
+    public function __construct(RequestInterface $request, $data)
     {
         parent::__construct($request, $data);
-        $this->endpoint = $endpoint;
-    }
-
-    public function getEndpoint(): string
-    {
-        return $this->endpoint;
     }
 
     public function getCode(): int

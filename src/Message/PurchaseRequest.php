@@ -81,7 +81,7 @@ class PurchaseRequest extends AbstractRequest
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response = new PurchaseResponse($this, $responseData, $this->getEndpoint());
+        return $this->response = new PurchaseResponse($this, $responseData);
     }
 
     private function generateSignature(): string

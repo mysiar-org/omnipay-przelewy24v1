@@ -26,6 +26,6 @@ class TestAccessRequest extends AbstractRequest
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response = new TestAccessResponse($this, $responseData, $this->getEndpoint());
+        return $this->response = new TestAccessResponse($this, $responseData);
     }
 }
