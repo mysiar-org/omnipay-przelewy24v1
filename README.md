@@ -6,9 +6,10 @@
 
 ## API endpoints implemented
 
-| API endpoint                   | Gateway method |
-|:-------------------------------|:---------------|
-| /api/v1/testAccess             | testAccess     |
-| /api/v1/payment/methods        | methods        |
-| /api/v1/transaction/register   | purchase       |
+| API endpoint                 | Gateway method    |
+|:-----------------------------|:------------------|
+| /api/v1/testAccess           | testAccess        |
+| /api/v1/payment/methods      | methods           |
+| /api/v1/transaction/register | purchase          |
+| /api/v1/transaction/verify   | completePurchase  |
 

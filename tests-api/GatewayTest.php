@@ -58,7 +58,7 @@ class GatewayTest extends TestCase
 
         $response = $this->gateway->purchase([
             'sessionId' => $sessionId,
-            'amount' => '10.00',
+            'amount' => '10.66',
             'currency' => 'PLN',
             'description' => 'Transaction description',
             'email' => 'franek@dolas.com',
@@ -76,6 +76,29 @@ class GatewayTest extends TestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertContains('https://sandbox.przelewy24.pl/trnRequest/', $response->getRedirectUrl());
         $this->assertSame(35, strlen($response->getToken()));
+    }
+
+    /*
+     * sequence to run this test
+     * 1. run testPurchase
+     * 2. use redirect url to commit transaction
+     * 3. check request catcher for payload
+     * 4. fill below sessionId & transactionId (orderId in payload) value
+     */
+    public function testComplete(): void
+    {
+        $this->markTestSkipped('Comment this out if you want complete purchase as per above comment description');
+        $sessionId = 'u6ipAwPFXJiVTqG';
+        $transactionId = '317213045';
+        $response = $this->gateway->completePurchase([
+            'sessionId' => $sessionId,
+            'amount' => '10.66',
+            'currency' => 'PLN',
+            'transactionId' => $transactionId,
+        ])->send();
+
+        VarDumper::dump($response->getCode());
+        VarDumper::dump($response->getMessage());
     }
 
     private function randomString(int $length = 15): string

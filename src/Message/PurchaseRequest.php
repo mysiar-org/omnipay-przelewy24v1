@@ -6,18 +6,6 @@ namespace Omnipay\Przelewy24\Message;
 
 class PurchaseRequest extends AbstractRequest
 {
-//    /** @inheritdoc */
-//    public function getAmount()
-//    {
-//        return $this->getParameter('amount');
-//    }
-//
-//    /** @inheritdoc */
-//    public function setAmount($value): self
-//    {
-//        return $this->setParameter('amount', $value);
-//    }
-
     public function getSessionId(): string
     {
         return $this->getParameter('sessionId');
@@ -107,10 +95,5 @@ class PurchaseRequest extends AbstractRequest
                 JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
             )
         );
-    }
-
-    private function internalAmountValue(): int
-    {
-        return (int) bcmul($this->getAmount(), '100', 2);
     }
 }

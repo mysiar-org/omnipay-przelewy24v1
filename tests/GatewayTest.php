@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Omnipay\Przelewy24\Gateway;
+use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
@@ -145,6 +146,18 @@ class GatewayTest extends GatewayTestCase
             'amount' => '1000',
         ]);
         $request->setAmount('10.00');
+        $this->assertSame('10.00', $request->getAmount());
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_a_complete_purchase()
+    {
+        $request = $this->gateway->completePurchase([
+            'amount' => '10.00',
+        ]);
+        $this->assertInstanceOf(CompletePurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 }

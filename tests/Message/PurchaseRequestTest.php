@@ -111,7 +111,7 @@ class PurchaseRequestTest extends TestCase
         );
         $this->assertNull($response->getRedirectData());
         $this->assertNull($response->getTransactionReference());
-        $this->assertSame(200, $response->getCode());
+        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
     }
 
