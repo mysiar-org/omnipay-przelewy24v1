@@ -58,7 +58,7 @@ class GatewayTest extends TestCase
 
         $response = $this->gateway->purchase([
             'sessionId' => $sessionId,
-            'amount' => 1000,
+            'amount' => '10.00',
             'currency' => 'PLN',
             'description' => 'Transaction description',
             'email' => 'franek@dolas.com',
@@ -69,6 +69,7 @@ class GatewayTest extends TestCase
 
         VarDumper::dump($sessionId);
         VarDumper::dump($response->getRedirectUrl());
+        VarDumper::dump($response->getMessage());
 
         $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
