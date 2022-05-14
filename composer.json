@@ -26,7 +26,8 @@
   },
   "require": {
     "omnipay/common": "^3",
-    "ext-json": "*"
+    "ext-json": "*",
+    "php": "^7.2"
   },
   "require-dev": {
     "omnipay/tests": "^3",

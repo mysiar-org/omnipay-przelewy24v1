@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Omnipay\Przelewy24\Gateway;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
+use Omnipay\Przelewy24\Message\RefundsRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 use Omnipay\Tests\GatewayTestCase;
 
@@ -138,5 +139,61 @@ class GatewayTest extends GatewayTestCase
 
         $request->setAmount(10);
         $this->assertSame(10, $request->getAmount());
+    }
+
+    /**
+     * @test
+     * @dataProvider refund_data_provider
+     */
+    public function it_should_create_a_refund(
+        string $requestId,
+        array $refunds,
+        string $refundsUuid,
+        ?string $urlStatus
+    ) {
+        $data = [
+            'requestId' => $requestId,
+            'refunds' => $refunds,
+            'refundsUuid' => $refundsUuid,
+            'urlStatus' => $urlStatus
+        ];
+
+        $request = $this->gateway->refund($data);
+
+        $this->assertInstanceOf(RefundsRequest::class, $request);
+
+        $this->assertSame($requestId, $request->getRequestId());
+        $this->assertSame($refunds, $request->getRefunds());
+        $this->assertSame($refundsUuid, $request->getRefundsUuid());
+        $this->assertSame($urlStatus, $request->getUrlStatus());
+    }
+
+    public function refund_data_provider(): array
+    {
+        return [
+            [
+                'requestId' => '123',
+                'refunds' => [
+                    [
+                        'orderId' => '123',
+                        'sessionId' => '123',
+                        'amount' => '123'
+                    ]
+                ],
+                'refundsUuid' => '321',
+                'urlStatus' => 'status'
+            ],
+            [
+                'requestId' => 'gsa',
+                'refunds' => [
+                    [
+                        'orderId' => 'dfsa',
+                        'amount' => 'dsa'
+                    ]
+                ],
+                'refundsUuid' => '512',
+                'urlStatus' => '15215215'
+            ]
+        ];
     }
 }
