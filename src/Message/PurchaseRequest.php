@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Omnipay\Przelewy24\Message;
 
-use Omnipay\Common\Message\ResponseInterface;
-
 class PurchaseRequest extends AbstractRequest
 {
     public function getAmount(): int
@@ -65,7 +63,7 @@ class PurchaseRequest extends AbstractRequest
             'notifyUrl'
         );
 
-        $data = [
+        return [
             'merchantId' => $this->getMerchantId(),
             'posId' => $this->getPosId(),
             'sessionId' => $this->getSessionId(),
@@ -77,16 +75,33 @@ class PurchaseRequest extends AbstractRequest
             'language' => $this->getLanguage(),
             'urlReturn' => $this->getReturnUrl(),
             'urlStatus' => $this->getNotifyUrl(),
-            'sign' => 'TODO'
+            'sign' => $this->generateSignature(),
         ];
-
-
-        // TODO: Implement getData() method.
     }
 
     public function sendData($data)
     {
-        // TODO: Implement sendData() method.
+        $httpResponse = $this->sendRequest('POST', 'transaction/register', $data);
+
+        $responseData = json_decode($httpResponse->getBody()->getContents(), true);
+
+        return $this->response = new PurchaseResponse($this, $responseData, $this->getEndpoint());
     }
 
+    private function generateSignature(): string
+    {
+        return hash(
+            self::SIGN_ALGO,
+            json_encode(
+                [
+                    'sessionId' => $this->getSessionId(),
+                    'merchantId' => (int) $this->getMerchantId(),
+                    'amount' => (int) $this->getAmount(),
+                    'currency' => $this->getCurrency(),
+                    'crc' => $this->getCrc(),
+                ],
+                JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+            )
+        );
+    }
 }

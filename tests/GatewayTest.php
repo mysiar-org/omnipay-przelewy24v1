@@ -110,7 +110,7 @@ class GatewayTest extends GatewayTestCase
     }
 
     /**
-     * @test
+     * @test        VarDumper::dump($data);
      */
     public function it_should_create_a_test_access()
     {
@@ -132,7 +132,9 @@ class GatewayTest extends GatewayTestCase
      */
     public function it_should_create_a_purchase()
     {
-        $request = $this->gateway->purchase(['amount' => 1000]);
+        $request = $this->gateway->purchase([
+            'amount' => 1000,
+        ]);
         $this->assertInstanceOf(PurchaseRequest::class, $request);
         $this->assertSame(1000, $request->getAmount());
 

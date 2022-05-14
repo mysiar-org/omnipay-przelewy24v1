@@ -13,6 +13,12 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
     protected $testEndpoint = 'https://sandbox.przelewy24.pl/api/v1/';
 
+    protected $liveRedirectEndpoint = 'https://secure.przelewy24.pl/';
+
+    protected $testRedirectEndpoint = 'https://sandbox.przelewy24.pl/';
+
+    protected const SIGN_ALGO = 'sha384';
+
     public function getMerchantId()
     {
         return $this->getParameter('merchantId');
@@ -78,6 +84,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }
 
+    public function getRedirectEndpoint(): string
+    {
+        return $this->getTestMode() ? $this->testRedirectEndpoint : $this->liveRedirectEndpoint;
+    }
+
     /**
      * @param mixed $data
      */
@@ -93,7 +104,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
                     base64_encode(sprintf('%s:%s', $this->getMerchantId(), $this->getReportKey()))
                 ),
             ],
-            empty($data) ? null : json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+            empty($data) ? null : json_encode($data)
         );
     }
 }

@@ -2,9 +2,6 @@
 
 **Requirement**
 
-env variables:
+* set your params in .env
+* run `source .env`
 
-* P24V1_MERCHANT_ID
-* P24V1_POS_ID
-* P24V1_CRC
-* P24V1_REPORT_KEY
