@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Omnipay\Przelewy24\Message;
 
-use Omnipay\Common\Message\ResponseInterface;
-
 class CompletePurchaseRequest extends AbstractRequest
 {
     public function getSessionId(): string
@@ -18,16 +16,6 @@ class CompletePurchaseRequest extends AbstractRequest
         return $this->setParameter('sessionId', $value);
     }
 
-    public function getAmount(): int
-    {
-        return $this->getParameter('amount');
-    }
-
-    public function setAmount($value): self
-    {
-        return $this->setParameter('amount', $value);
-    }
-
     public function getData()
     {
         $this->validate('sessionId', 'amount', 'currency', 'transactionId');
@@ -36,7 +24,7 @@ class CompletePurchaseRequest extends AbstractRequest
             'merchantId' => $this->getMerchantId(),
             'posId' => $this->getPosId(),
             'sessionId' => $this->getSessionId(),
-            'amount' => $this->getAmount(),
+            'amount' => $this->internalAmountValue(),
             'currency' => $this->getCurrency(),
             'orderId' => $this->getTransactionId(),
             'sign' => $this->generateSignature(),
@@ -60,7 +48,7 @@ class CompletePurchaseRequest extends AbstractRequest
                 [
                     'sessionId' => $this->getSessionId(),
                     'orderId' => (int) $this->getTransactionId(),
-                    'amount' => (int) $this->getAmount(),
+                    'amount' => $this->internalAmountValue(),
                     'currency' => $this->getCurrency(),
                     'crc' => $this->getCrc(),
                 ],
