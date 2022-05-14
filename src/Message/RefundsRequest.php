@@ -8,39 +8,47 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class RefundsRequest extends AbstractRequest
 {
-    public function setRequestId(string $requestId) : self {
+    public function setRequestId(string $requestId): self
+    {
         return $this->setParameter('requestId', $requestId);
     }
 
-    public function getRequestId() : string {
+    public function getRequestId(): string
+    {
         return $this->getParameter('requestId');
     }
 
-    public function setRefunds(array $refunds) : self {
+    public function setRefunds(array $refunds): self
+    {
         return $this->setParameter('refunds', $refunds);
     }
 
-    public function getRefunds() : array {
+    public function getRefunds(): array
+    {
         return $this->getParameter('refunds');
     }
 
-    public function setRefundsUuid(string $refundsUuid) : self {
+    public function setRefundsUuid(string $refundsUuid): self
+    {
         return $this->setParameter('refundsUuid', $refundsUuid);
     }
 
-    public function getRefundsUuid() : string {
+    public function getRefundsUuid(): string
+    {
         return $this->getParameter('refundsUuid');
     }
 
-    public function setUrlStatus(string $urlStatus) : self {
+    public function setUrlStatus(string $urlStatus): self
+    {
         return $this->setParameter('urlStatus', $urlStatus);
     }
 
-    public function getUrlStatus() : string {
+    public function getUrlStatus(): string
+    {
         return $this->getParameter('urlStatus');
     }
 
-    public function getData() : array
+    public function getData(): array
     {
         $this->validate('requestId', 'refunds', 'refundsUuid');
         $this->validateRefundsArray();
@@ -49,7 +57,7 @@ class RefundsRequest extends AbstractRequest
             'requestId' => $this->getRequestId(),
             'refunds' => $this->getRefunds(),
             'refundsUuid' => $this->getRefundsUuid(),
-            'urlStatus' => $this->getUrlStatus()
+            'urlStatus' => $this->getUrlStatus(),
         ];
 
         return array_filter($data);
@@ -72,20 +80,21 @@ class RefundsRequest extends AbstractRequest
     /**
      * @throws InvalidRequestException
      */
-    private function validateRefundsArray() : void {
+    private function validateRefundsArray(): void
+    {
         $refunds = $this->getParameter('refunds');
-        if(is_null($refunds) || empty($refunds)) {
+        if (is_null($refunds) || empty($refunds)) {
             throw new InvalidRequestException("The parameter `refunds` can not be empty");
         }
 
         $requiredFields = ['orderId', 'sessionId', 'amount'];
 
         foreach ($refunds as $key => $refund) {
-            if(!is_array($refund)) {
+            if (! is_array($refund)) {
                 throw new InvalidRequestException("Values in `refunds` need to be an array");
             }
             foreach ($requiredFields as $requiredField) {
-                if(!array_key_exists($requiredField, $refund)) {
+                if (! array_key_exists($requiredField, $refund)) {
                     throw new InvalidRequestException("The $requiredField parameter is required in index $key of `refunds` array");
                 }
             }

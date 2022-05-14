@@ -28,5 +28,4 @@ class RefundsResponse extends AbstractResponse
     {
         return $this->responseCode;
     }
-
 }

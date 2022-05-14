@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Omnipay\Przelewy24\Message;
 
-use Omnipay\Common\Message\ResponseInterface;
-
 class PurchaseRequest extends AbstractRequest
 {
     public function getAmount(): int
@@ -77,16 +75,11 @@ class PurchaseRequest extends AbstractRequest
             'language' => $this->getLanguage(),
             'urlReturn' => $this->getReturnUrl(),
             'urlStatus' => $this->getNotifyUrl(),
-            'sign' => 'TODO'
+            'sign' => 'TODO',
         ];
-
-
-        // TODO: Implement getData() method.
     }
 
     public function sendData($data)
     {
-        // TODO: Implement sendData() method.
     }
-
 }

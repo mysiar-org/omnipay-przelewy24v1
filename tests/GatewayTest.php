@@ -133,7 +133,9 @@ class GatewayTest extends GatewayTestCase
      */
     public function it_should_create_a_purchase()
     {
-        $request = $this->gateway->purchase(['amount' => 1000]);
+        $request = $this->gateway->purchase([
+            'amount' => 1000,
+        ]);
         $this->assertInstanceOf(PurchaseRequest::class, $request);
         $this->assertSame(1000, $request->getAmount());
 
@@ -155,7 +157,7 @@ class GatewayTest extends GatewayTestCase
             'requestId' => $requestId,
             'refunds' => $refunds,
             'refundsUuid' => $refundsUuid,
-            'urlStatus' => $urlStatus
+            'urlStatus' => $urlStatus,
         ];
 
         $request = $this->gateway->refund($data);
@@ -177,23 +179,23 @@ class GatewayTest extends GatewayTestCase
                     [
                         'orderId' => '123',
                         'sessionId' => '123',
-                        'amount' => '123'
-                    ]
+                        'amount' => '123',
+                    ],
                 ],
                 'refundsUuid' => '321',
-                'urlStatus' => 'status'
+                'urlStatus' => 'status',
             ],
             [
                 'requestId' => 'gsa',
                 'refunds' => [
                     [
                         'orderId' => 'dfsa',
-                        'amount' => 'dsa'
-                    ]
+                        'amount' => 'dsa',
+                    ],
                 ],
                 'refundsUuid' => '512',
-                'urlStatus' => '15215215'
-            ]
+                'urlStatus' => '15215215',
+            ],
         ];
     }
 }

@@ -31,26 +31,25 @@ class RefundsRequestTest extends TestCase
         ?string $urlStatus,
         ?string $expectedExceptionMessage
     ) {
-
         $data = [];
 
-        if(!is_null($requestId)) {
+        if (! is_null($requestId)) {
             $data['requestId'] = $requestId;
         }
 
         $data['refunds'] = $refunds;
 
-        if(!is_null($refundsUuid)) {
+        if (! is_null($refundsUuid)) {
             $data['refundsUuid'] = $refundsUuid;
         }
 
-        if(!is_null($urlStatus)) {
+        if (! is_null($urlStatus)) {
             $data['urlStatus'] = $urlStatus;
         }
 
         $this->request->initialize($data);
 
-        if(!is_null($expectedExceptionMessage)) {
+        if (! is_null($expectedExceptionMessage)) {
             $this->expectException(InvalidRequestException::class);
             $this->expectExceptionMessage($expectedExceptionMessage);
         }
@@ -71,56 +70,56 @@ class RefundsRequestTest extends TestCase
                     [
                         'orderId' => '123',
                         'sessionId' => '123',
-                        'amount' => '123'
-                    ]
+                        'amount' => '123',
+                    ],
                 ],
                 'refundsUuid' => '321',
                 'urlStatus' => 'status',
-                'expectedExceptionMessage' => null
+                'expectedExceptionMessage' => null,
             ],
             [
                 'requestId' => 'gsa',
                 'refunds' => [
                     [
                         'orderId' => 'dfsa',
-                        'amount' => 'dsa'
-                    ]
+                        'amount' => 'dsa',
+                    ],
                 ],
                 'refundsUuid' => '512',
                 'urlStatus' => '15215215',
-                'expectedExceptionMessage' => 'The sessionId parameter is required in index 0 of `refunds` array'
+                'expectedExceptionMessage' => 'The sessionId parameter is required in index 0 of `refunds` array',
             ],
             [
                 'requestId' => 'gsa',
                 'refunds' => [
                     [
-                        'amount' => 'dsa'
-                    ]
+                        'amount' => 'dsa',
+                    ],
                 ],
                 'refundsUuid' => '512',
                 'urlStatus' => '15215215',
-                'expectedExceptionMessage' => 'The orderId parameter is required in index 0 of `refunds` array'
+                'expectedExceptionMessage' => 'The orderId parameter is required in index 0 of `refunds` array',
             ],
             [
                 'requestId' => 'gsa',
                 'refunds' => [],
                 'refundsUuid' => '512',
                 'urlStatus' => '15215215',
-                'expectedExceptionMessage' => 'The parameter `refunds` can not be empty'
+                'expectedExceptionMessage' => 'The parameter `refunds` can not be empty',
             ],
             [
                 'requestId' => 'gsa',
-                'refunds' => [1,23],
+                'refunds' => [1, 23],
                 'refundsUuid' => '512',
                 'urlStatus' => '15215215',
-                'expectedExceptionMessage' => 'Values in `refunds` need to be an array'
+                'expectedExceptionMessage' => 'Values in `refunds` need to be an array',
             ],
             [
                 'requestId' => null,
-                'refunds' => [1,23],
+                'refunds' => [1, 23],
                 'refundsUuid' => null,
                 'urlStatus' => '',
-                'expectedExceptionMessage' => 'The requestId parameter is required'
+                'expectedExceptionMessage' => 'The requestId parameter is required',
             ],
             [
                 'requestId' => '123',
@@ -128,12 +127,12 @@ class RefundsRequestTest extends TestCase
                     [
                         'orderId' => '123',
                         'sessionId' => '123',
-                        'amount' => '123'
-                    ]
+                        'amount' => '123',
+                    ],
                 ],
                 'refundsUuid' => null,
                 'urlStatus' => '',
-                'expectedExceptionMessage' => 'The refundsUuid parameter is required'
+                'expectedExceptionMessage' => 'The refundsUuid parameter is required',
             ],
             [
                 'requestId' => '123',
@@ -141,17 +140,17 @@ class RefundsRequestTest extends TestCase
                     [
                         'orderId' => '123',
                         'sessionId' => '123',
-                        'amount' => '123'
+                        'amount' => '123',
                     ],
                     [
                         'sessionId' => '123',
-                        'amount' => '123'
-                    ]
+                        'amount' => '123',
+                    ],
                 ],
                 'refundsUuid' => '123',
                 'urlStatus' => null,
-                'expectedExceptionMessage' => 'The orderId parameter is required in index 1 of `refunds` array'
-            ]
+                'expectedExceptionMessage' => 'The orderId parameter is required in index 1 of `refunds` array',
+            ],
         ];
     }
 }

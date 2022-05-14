@@ -9,7 +9,6 @@ use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\RefundsRequest;
-use Omnipay\Przelewy24\Message\RefundsResponse;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 
 class Gateway extends AbstractGateway
