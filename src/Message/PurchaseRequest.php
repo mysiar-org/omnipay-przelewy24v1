@@ -11,10 +11,6 @@ class PurchaseRequest extends AbstractRequest
         return $this->getParameter('amount');
     }
 
-    /**
-     * @param string $value
-     * @return $this
-     */
     public function setAmount($value): self
     {
         return $this->setParameter('amount', $value);

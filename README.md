@@ -6,6 +6,9 @@
 
 ## API endpoints implemented
 
-* /api/v1/testAccess
-* /api/v1/payment/methods
-* /api/v1/transaction/register
+| API endpoint                   | Gateway method |
+|:-------------------------------|:---------------|
+| /api/v1/testAccess             | testAccess     |
+| /api/v1/payment/methods        | methods        |
+| /api/v1/transaction/register   | purchase       |
+
