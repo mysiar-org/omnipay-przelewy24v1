@@ -137,7 +137,13 @@ class GatewayTest extends GatewayTestCase
         ]);
         $this->assertInstanceOf(PurchaseRequest::class, $request);
         $this->assertSame(1000, $request->getAmount());
+    }
 
+    public function it_should_set_and_get_amount_on_purchase()
+    {
+        $request = $this->gateway->purchase([
+            'amount' => 1000,
+        ]);
         $request->setAmount(10);
         $this->assertSame(10, $request->getAmount());
     }
