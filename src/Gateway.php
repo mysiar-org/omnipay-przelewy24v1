@@ -7,6 +7,7 @@ namespace Omnipay\Przelewy24;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
+use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 
 class Gateway extends AbstractGateway
@@ -38,6 +39,7 @@ class Gateway extends AbstractGateway
             'posId' => '',
             'crc' => '',
             'reportKey' => '',
+            'language' => 'en',
             'testMode' => false,
         ];
     }
@@ -92,6 +94,16 @@ class Gateway extends AbstractGateway
         return $this->setParameter('channel', $value);
     }
 
+    public function getLanguage(): string
+    {
+        return $this->getParameter('language');
+    }
+
+    public function setLanguage(string $value): self
+    {
+        return $this->setParameter('language', $value);
+    }
+
     /**
      * @return AbstractRequest|TestAccessRequest
      */
@@ -108,5 +120,14 @@ class Gateway extends AbstractGateway
         return $this->createRequest(MethodsRequest::class, [
             'lang' => $lang,
         ]);
+    }
+
+    /**
+     * @param string[] $options
+     * @return AbstractRequest|PurchaseRequest
+     */
+    public function purchase(array $options = []): PurchaseRequest
+    {
+        return $this->createRequest(PurchaseRequest::class, $options);
     }
 }

@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use Omnipay\Przelewy24\Gateway;
+use Omnipay\Przelewy24\Message\MethodsRequest;
+use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 use Omnipay\Tests\GatewayTestCase;
 
@@ -38,6 +40,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('', $defaultParameters['posId']);
         $this->assertSame('', $defaultParameters['crc']);
         $this->assertSame('', $defaultParameters['reportKey']);
+        $this->assertSame('en', $defaultParameters['language']);
         $this->assertFalse($defaultParameters['testMode']);
     }
 
@@ -99,9 +102,49 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
+    public function it_should_set_and_get_language()
+    {
+        $language = 'pl';
+        $this->gateway->setLanguage($language);
+        $this->assertSame($language, $this->gateway->getLanguage());
+    }
+
+    /**
+     * @test        VarDumper::dump($data);
+     */
     public function it_should_create_a_test_access()
     {
         $request = $this->gateway->testAccess();
         $this->assertInstanceOf(TestAccessRequest::class, $request);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_a_methods()
+    {
+        $request = $this->gateway->methods();
+        $this->assertInstanceOf(MethodsRequest::class, $request);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_a_purchase()
+    {
+        $request = $this->gateway->purchase([
+            'amount' => 1000,
+        ]);
+        $this->assertInstanceOf(PurchaseRequest::class, $request);
+        $this->assertSame(1000, $request->getAmount());
+    }
+
+    public function it_should_set_and_get_amount_on_purchase()
+    {
+        $request = $this->gateway->purchase([
+            'amount' => 1000,
+        ]);
+        $request->setAmount(10);
+        $this->assertSame(10, $request->getAmount());
     }
 }
