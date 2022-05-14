@@ -8,7 +8,11 @@ class PurchaseResponse extends AbstractResponse
 {
     public function getToken()
     {
-        return trim($this->data['data']['token']);
+        if (isset($this->data['data'])) {
+            return trim($this->data['data']['token']);
+        }
+
+        return '';
     }
 
     public function getRedirectUrl()
@@ -19,5 +23,15 @@ class PurchaseResponse extends AbstractResponse
     public function getRedirectMethod()
     {
         return 'GET';
+    }
+
+    public function isRedirect(): bool
+    {
+        return $this->isSuccessful() && null !== $this->getToken();
+    }
+
+    public function getRedirectData()
+    {
+        return null;
     }
 }

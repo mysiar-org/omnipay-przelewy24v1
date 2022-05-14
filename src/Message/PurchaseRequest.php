@@ -6,15 +6,17 @@ namespace Omnipay\Przelewy24\Message;
 
 class PurchaseRequest extends AbstractRequest
 {
-    public function getAmount(): int
-    {
-        return $this->getParameter('amount');
-    }
-
-    public function setAmount($value): self
-    {
-        return $this->setParameter('amount', $value);
-    }
+//    /** @inheritdoc */
+//    public function getAmount()
+//    {
+//        return $this->getParameter('amount');
+//    }
+//
+//    /** @inheritdoc */
+//    public function setAmount($value): self
+//    {
+//        return $this->setParameter('amount', $value);
+//    }
 
     public function getSessionId(): string
     {
@@ -59,11 +61,11 @@ class PurchaseRequest extends AbstractRequest
             'notifyUrl'
         );
 
-        return [
+        $data = [
             'merchantId' => $this->getMerchantId(),
             'posId' => $this->getPosId(),
             'sessionId' => $this->getSessionId(),
-            'amount' => $this->getAmount(),
+            'amount' => $this->internalAmountValue(),
             'currency' => $this->getCurrency(),
             'description' => $this->getDescription(),
             'email' => $this->getEmail(),
@@ -73,6 +75,12 @@ class PurchaseRequest extends AbstractRequest
             'urlStatus' => $this->getNotifyUrl(),
             'sign' => $this->generateSignature(),
         ];
+
+        if (null !== $this->getChannel()) {
+            $data['channel'] = $this->getChannel();
+        }
+
+        return $data;
     }
 
     public function sendData($data)
@@ -81,7 +89,7 @@ class PurchaseRequest extends AbstractRequest
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response = new PurchaseResponse($this, $responseData, $this->getEndpoint());
+        return $this->response = new PurchaseResponse($this, $responseData);
     }
 
     private function generateSignature(): string
@@ -92,12 +100,17 @@ class PurchaseRequest extends AbstractRequest
                 [
                     'sessionId' => $this->getSessionId(),
                     'merchantId' => (int) $this->getMerchantId(),
-                    'amount' => (int) $this->getAmount(),
+                    'amount' => $this->internalAmountValue(),
                     'currency' => $this->getCurrency(),
                     'crc' => $this->getCrc(),
                 ],
                 JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
             )
         );
+    }
+
+    private function internalAmountValue(): int
+    {
+        return (int) bcmul($this->getAmount(), '100', 2);
     }
 }

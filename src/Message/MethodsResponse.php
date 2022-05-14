@@ -13,9 +13,9 @@ class MethodsResponse extends AbstractResponse
      */
     private $methods = [];
 
-    public function __construct(RequestInterface $request, $data, $endpoint)
+    public function __construct(RequestInterface $request, $data)
     {
-        parent::__construct($request, $data, $endpoint);
+        parent::__construct($request, $data);
         if (isset($data['data'])) {
             $this->methods = $data['data'];
         }
