@@ -2,9 +2,7 @@
 
 **Requirement**
 
-env variables:
+* https://omnipay-przelewy24v1.requestcatcher.com if not exists create
+* set your params in .env
+* run `source .env`
 
-* P24V1_MERCHANT_ID
-* P24V1_POS_ID
-* P24V1_CRC
-* P24V1_REPORT_KEY

@@ -6,20 +6,6 @@ namespace Omnipay\Przelewy24\Message;
 
 class PurchaseRequest extends AbstractRequest
 {
-    public function getAmount(): int
-    {
-        return $this->getParameter('amount');
-    }
-
-    /**
-     * @param string $value
-     * @return $this
-     */
-    public function setAmount($value): self
-    {
-        return $this->setParameter('amount', $value);
-    }
-
     public function getSessionId(): string
     {
         return $this->getParameter('sessionId');
@@ -67,7 +53,7 @@ class PurchaseRequest extends AbstractRequest
             'merchantId' => $this->getMerchantId(),
             'posId' => $this->getPosId(),
             'sessionId' => $this->getSessionId(),
-            'amount' => $this->getAmount(),
+            'amount' => $this->internalAmountValue(),
             'currency' => $this->getCurrency(),
             'description' => $this->getDescription(),
             'email' => $this->getEmail(),
@@ -75,11 +61,39 @@ class PurchaseRequest extends AbstractRequest
             'language' => $this->getLanguage(),
             'urlReturn' => $this->getReturnUrl(),
             'urlStatus' => $this->getNotifyUrl(),
-            'sign' => 'TODO',
+            'sign' => $this->generateSignature(),
         ];
+
+        if (null !== $this->getChannel()) {
+            $data['channel'] = $this->getChannel();
+        }
+
+        return $data;
     }
 
     public function sendData($data)
     {
+        $httpResponse = $this->sendRequest('POST', 'transaction/register', $data);
+
+        $responseData = json_decode($httpResponse->getBody()->getContents(), true);
+
+        return $this->response = new PurchaseResponse($this, $responseData);
+    }
+
+    private function generateSignature(): string
+    {
+        return hash(
+            self::SIGN_ALGO,
+            json_encode(
+                [
+                    'sessionId' => $this->getSessionId(),
+                    'merchantId' => (int) $this->getMerchantId(),
+                    'amount' => $this->internalAmountValue(),
+                    'currency' => $this->getCurrency(),
+                    'crc' => $this->getCrc(),
+                ],
+                JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+            )
+        );
     }
 }

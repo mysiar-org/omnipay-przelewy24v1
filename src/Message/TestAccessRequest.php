@@ -28,6 +28,6 @@ class TestAccessRequest extends AbstractRequest
         VarDumper::dump($httpResponse->getBody()->getContents());
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response = new TestAccessResponse($this, $responseData, $this->getEndpoint());
+        return $this->response = new TestAccessResponse($this, $responseData);
     }
 }
