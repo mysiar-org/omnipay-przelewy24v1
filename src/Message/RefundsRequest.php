@@ -51,6 +51,7 @@ class RefundsRequest extends AbstractRequest
     {
         $this->validate('requestId', 'refunds', 'refundsUuid');
         $this->validateRefundsArray();
+        $this->transformRefundsAmount();
 
         $data = [
             'requestId' => $this->getRequestId(),
@@ -97,5 +98,18 @@ class RefundsRequest extends AbstractRequest
                 }
             }
         }
+    }
+
+    /**
+     * @throws InvalidRequestException
+     */
+    private function transformRefundsAmount(): void
+    {
+        $refunds = $this->getParameter('refunds');
+        foreach ($refunds as $key => $refund) {
+            $refunds[$key]['amount'] = $this->internalAmountValue($refund['amount']);
+        }
+
+        $this->setParameter('refunds', $refunds);
     }
 }

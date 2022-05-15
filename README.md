@@ -28,6 +28,8 @@ The following gateways are provided by this package:
 
 * Przelewy24
 
+Reference official documentation https://developers.przelewy24.pl/index.php
+
 ## Example
 
 ```php

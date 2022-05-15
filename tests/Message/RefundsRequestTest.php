@@ -69,7 +69,11 @@ class RefundsRequestTest extends TestCase
 
         $data = $this->request->getData();
         $this->assertSame($requestId, $data['requestId']);
-        $this->assertSame($refunds, $data['refunds']);
+        foreach ($refunds as $key => $refund) {
+            $this->assertSame($refund['orderId'], $data['refunds'][$key]['orderId']);
+            $this->assertSame($refund['sessionId'], $data['refunds'][$key]['sessionId']);
+            $this->assertNotSame($refund['amount'], $data['refunds'][$key]['amount']);
+        }
         $this->assertSame($refundsUuid, $data['refundsUuid']);
         $this->assertSame($urlStatus, $data['urlStatus']);
     }
