@@ -107,9 +107,4 @@ abstract class AbstractRequest extends BaseAbstractRequest
             empty($data) ? null : json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
         );
     }
-
-    protected function internalAmountValue(): int
-    {
-        return (int) bcmul($this->getAmount(), '100', 2);
-    }
 }

@@ -53,7 +53,7 @@ class PurchaseRequest extends AbstractRequest
             'merchantId' => $this->getMerchantId(),
             'posId' => $this->getPosId(),
             'sessionId' => $this->getSessionId(),
-            'amount' => $this->internalAmountValue(),
+            'amount' => $this->getAmount(),
             'currency' => $this->getCurrency(),
             'description' => $this->getDescription(),
             'email' => $this->getEmail(),
@@ -88,7 +88,7 @@ class PurchaseRequest extends AbstractRequest
                 [
                     'sessionId' => $this->getSessionId(),
                     'merchantId' => (int) $this->getMerchantId(),
-                    'amount' => $this->internalAmountValue(),
+                    'amount' => $this->getAmount(),
                     'currency' => $this->getCurrency(),
                     'crc' => $this->getCrc(),
                 ],
