@@ -16,7 +16,9 @@ class RefundsResponse extends AbstractResponse
     {
         parent::__construct($request, $data, $endpoint);
         $this->refunds = $data['data'] ?? null;
-        $this->responseCode = $data['responseCode'] ?? null;
+        if (isset($data['responseCode'])) {
+            $this->responseCode = (int) $data['responseCode'];
+        }
     }
 
     public function getRefunds(): array
@@ -24,8 +26,17 @@ class RefundsResponse extends AbstractResponse
         return $this->refunds;
     }
 
-    public function getResponseCode(): int
+    public function getResponseCode(): ?int
     {
         return $this->responseCode;
+    }
+
+    public function getCode(): int
+    {
+        if (! is_null($this->getResponseCode())) {
+            return $this->getResponseCode();
+        }
+
+        return parent::getCode();
     }
 }

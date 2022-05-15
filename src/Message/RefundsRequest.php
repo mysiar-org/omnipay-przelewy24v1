@@ -4,7 +4,6 @@ namespace Omnipay\Przelewy24\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
-use Symfony\Component\VarDumper\VarDumper;
 
 class RefundsRequest extends AbstractRequest
 {
@@ -38,12 +37,12 @@ class RefundsRequest extends AbstractRequest
         return $this->getParameter('refundsUuid');
     }
 
-    public function setUrlStatus(string $urlStatus): self
+    public function setUrlStatus(?string $urlStatus): self
     {
         return $this->setParameter('urlStatus', $urlStatus);
     }
 
-    public function getUrlStatus(): string
+    public function getUrlStatus(): ?string
     {
         return $this->getParameter('urlStatus');
     }

@@ -4,6 +4,7 @@ namespace Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Przelewy24\Message\RefundsRequest;
+use Omnipay\Przelewy24\Message\RefundsResponse;
 use Omnipay\Tests\TestCase;
 
 /**
@@ -11,6 +12,18 @@ use Omnipay\Tests\TestCase;
  */
 class RefundsRequestTest extends TestCase
 {
+    private const REQUEST_DATA = [
+        'requestId' => '123',
+        'refunds' => [
+            [
+                'orderId' => '123',
+                'sessionId' => '123',
+                'amount' => '123',
+            ],
+        ],
+        'refundsUuid' => '321',
+    ];
+
     /**
      * @var RefundsRequest
      */
@@ -59,6 +72,44 @@ class RefundsRequestTest extends TestCase
         $this->assertSame($refunds, $data['refunds']);
         $this->assertSame($refundsUuid, $data['refundsUuid']);
         $this->assertSame($urlStatus, $data['urlStatus']);
+    }
+
+    public function testSendSuccess()
+    {
+        $this->setMockHttpResponse('RefundsRequestSuccess.txt');
+        $this->request->initialize(self::REQUEST_DATA);
+        $response = $this->request->send();
+
+        $this->assertInstanceOf(RefundsResponse::class, $response);
+        $this->assertTrue($response->isSuccessful());
+        $this->assertNotNull($response->getRefunds());
+        $this->assertNotNull($response->getResponseCode());
+        $this->assertSame(1, count($response->getRefunds()));
+    }
+
+    /**
+     * @dataProvider failureResponseDataProvider
+     */
+    public function testSendFailure(string $fileName)
+    {
+        $this->setMockHttpResponse($fileName);
+        $this->request->initialize(self::REQUEST_DATA);
+        $response = $this->request->send();
+
+        $this->assertInstanceOf(RefundsResponse::class, $response);
+        $this->assertFalse($response->isSuccessful());
+        $this->assertNotNull($response->getCode());
+        $this->assertNotNull($response->getMessage());
+        $this->assertNull($response->getResponseCode());
+    }
+
+    public function failureResponseDataProvider(): array
+    {
+        return [
+            ['RefundsRequestFailure.txt'],
+            ['RefundsRequestFailedConflict.txt'],
+            ['RefundsRequestFailedAuthorization.txt'],
+        ];
     }
 
     public function refundDataProvider(): array

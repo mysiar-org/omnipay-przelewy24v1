@@ -2,6 +2,7 @@
   "name": "mysiar/omnipay-przelewy24v1",
   "type": "library",
   "description": "Przelewy24 API v1 driver for the Omnipay payment processing library",
+  "version": "1.0.16",
   "keywords": [
     "przelewy24",
     "gateway",
