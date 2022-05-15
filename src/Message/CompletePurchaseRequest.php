@@ -24,7 +24,7 @@ class CompletePurchaseRequest extends AbstractRequest
             'merchantId' => $this->getMerchantId(),
             'posId' => $this->getPosId(),
             'sessionId' => $this->getSessionId(),
-            'amount' => $this->internalAmountValue(),
+            'amount' => $this->getAmount(),
             'currency' => $this->getCurrency(),
             'orderId' => $this->getTransactionId(),
             'sign' => $this->generateSignature(),
@@ -48,7 +48,7 @@ class CompletePurchaseRequest extends AbstractRequest
                 [
                     'sessionId' => $this->getSessionId(),
                     'orderId' => (int) $this->getTransactionId(),
-                    'amount' => $this->internalAmountValue(),
+                    'amount' => $this->getAmount(),
                     'currency' => $this->getCurrency(),
                     'crc' => $this->getCrc(),
                 ],
