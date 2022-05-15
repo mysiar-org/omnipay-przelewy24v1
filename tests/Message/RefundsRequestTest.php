@@ -29,7 +29,7 @@ class RefundsRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new RefundsRequest($this->getHttpClient(), $this->getHttpRequest());
     }
@@ -43,7 +43,7 @@ class RefundsRequestTest extends TestCase
         ?string $refundsUuid,
         ?string $urlStatus,
         ?string $expectedExceptionMessage
-    ) {
+    ): void {
         $data = [];
 
         if (! is_null($requestId)) {
@@ -78,7 +78,7 @@ class RefundsRequestTest extends TestCase
         $this->assertSame($urlStatus, $data['urlStatus']);
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('RefundsRequestSuccess.txt');
         $this->request->initialize(self::REQUEST_DATA);
@@ -94,7 +94,7 @@ class RefundsRequestTest extends TestCase
     /**
      * @dataProvider failureResponseDataProvider
      */
-    public function testSendFailure(string $fileName)
+    public function testSendFailure(string $fileName): void
     {
         $this->setMockHttpResponse($fileName);
         $this->request->initialize(self::REQUEST_DATA);
