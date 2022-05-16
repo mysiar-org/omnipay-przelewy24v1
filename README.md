@@ -12,7 +12,7 @@
 | /api/v1/payment/methods          | methods          |
 | /api/v1/transaction/register     | purchase         |
 | /api/v1/transaction/verify       | completePurchase |
-| /api/v1/transaction/by/sessionId | transactionInfo  |
+| /api/v1/transaction/by/sessionId | purchaseInfo     |
 
 ## Install
 

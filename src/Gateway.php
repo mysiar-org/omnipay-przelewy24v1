@@ -10,6 +10,7 @@ use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
+use Omnipay\Przelewy24\Message\PurchaseInfoRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -139,5 +140,15 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $options = []): CompletePurchaseRequest
     {
         return $this->createRequest(CompletePurchaseRequest::class, $options);
+    }
+
+    /**
+     * @return AbstractRequest|PurchaseInfoRequest
+     */
+    public function purchaseInfo(string $transactionId): PurchaseInfoRequest
+    {
+        return $this->createRequest(PurchaseInfoRequest::class, [
+            'transactionId' => $transactionId,
+        ]);
     }
 }
