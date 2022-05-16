@@ -107,8 +107,8 @@ class GatewayTest extends TestCase
 
     public function testPurchaseInfo(): void
     {
-        $transactionId = '20c62d6b-5ff0-46a0-97eb-eea0dd5b4a93'; // real existing transaction
-        $response = $this->gateway->purchaseInfo($transactionId)->send();
+        $sessionId = '20c62d6b-5ff0-46a0-97eb-eea0dd5b4a93'; // real existing session
+        $response = $this->gateway->purchaseInfo($sessionId)->send();
 
         VarDumper::dump($response->getCode());
         VarDumper::dump($response->getInfo());

@@ -6,7 +6,6 @@ namespace Omnipay\Przelewy24\Message;
 
 use Omnipay\Common\Message\RequestInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\VarDumper\VarDumper;
 
 class PurchaseInfoResponse extends AbstractResponse
 {
@@ -33,7 +32,7 @@ class PurchaseInfoResponse extends AbstractResponse
 
     public function getCode(): int
     {
-        if (isset($this->data['responseCode']) && isset($this->data['error'])) {
+        if (isset($this->data['responseCode']) && isset($this->data['error']) && strlen($this->data['error']) > 0) {
             return Response::HTTP_NOT_FOUND;
         }
 

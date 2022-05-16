@@ -6,7 +6,6 @@ namespace Omnipay\Przelewy24\Message;
 
 use Omnipay\Common\Message\AbstractResponse as BaseAbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
-use Symfony\Component\VarDumper\VarDumper;
 
 abstract class AbstractResponse extends BaseAbstractResponse
 {
