@@ -36,6 +36,136 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('country', $value);
     }
 
+    public function getCardNotifyUrl(): ?string
+    {
+        return $this->getParameter('cardNotifyUrl');
+    }
+
+    public function setCardNotifyUrl(string $value): self
+    {
+        return $this->setParameter('cardNotifyUrl', $value);
+    }
+
+    public function getName(): ?string
+    {
+        return $this->getParameter('name');
+    }
+
+    public function setName(string $value): self
+    {
+        return $this->setParameter('name', $value);
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->getParameter('address');
+    }
+
+    public function setAddress(string $value): self
+    {
+        return $this->setParameter('address', $value);
+    }
+
+    public function getPostcode(): ?string
+    {
+        return $this->getParameter('postcode');
+    }
+
+    public function setPostcode(string $value): self
+    {
+        return $this->setParameter('postcode', $value);
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->getParameter('city');
+    }
+
+    public function setCity(string $value): self
+    {
+        return $this->setParameter('city', $value);
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->getParameter('phone');
+    }
+
+    public function setPhone(string $value): self
+    {
+        return $this->setParameter('phone', $value);
+    }
+
+    public function getTimeLimit(): ?int
+    {
+        return $this->getParameter('timeLimit');
+    }
+
+    public function setTimeLimit(int $value): self
+    {
+        return $this->setParameter('timeLimit', $value);
+    }
+
+    public function getWaitForResult(): ?bool
+    {
+        return $this->getParameter('waitForResult');
+    }
+
+    public function setWaitForResult(bool $value): self
+    {
+        return $this->setParameter('waitForResult', $value);
+    }
+
+    public function getRegulationAccept(): ?bool
+    {
+        return $this->getParameter('regulationAccept');
+    }
+
+    public function setRegulationAccept(bool $value): self
+    {
+        return $this->setParameter('regulationAccept', $value);
+    }
+
+    public function getShipping()
+    {
+        return $this->getParameter('shipping');
+    }
+
+    public function setShipping($value): self
+    {
+        return $this->setParameter('regulationAccept', $value);
+    }
+
+    public function getTransactionLabel(): ?string
+    {
+        return $this->getParameter('transactionLabel');
+    }
+
+    public function setTransactionLabel(string $value): self
+    {
+        return $this->setParameter('transactionLabel', $value);
+    }
+
+    public function getEncoding(): ?string
+    {
+        return $this->getParameter('encoding');
+    }
+
+    public function setEncoding(string $value): self
+    {
+        return $this->setParameter('encoding', $value);
+    }
+
+    public function getMethodRefId(): ?string
+    {
+        return $this->getParameter('methodRefId');
+    }
+
+    public function setMethodRefId(string $value): self
+    {
+        return $this->setParameter('methodRefId', $value);
+    }
+
     public function getData()
     {
         $this->validate(
@@ -57,21 +187,38 @@ class PurchaseRequest extends AbstractRequest
             'currency' => $this->getCurrency(),
             'description' => $this->getDescription(),
             'email' => $this->getEmail(),
+            'client' => $this->getName(),
+            'address' => $this->getAddress(),
+            'zip' => $this->getPostcode(),
+            'city' => $this->getCity(),
             'country' => $this->getCountry(),
+            'phone' => $this->getPhone(),
             'language' => $this->getLanguage(),
+            'method' => $this->getPaymentMethod() ? (int) $this->getPaymentMethod() : null,
             'urlReturn' => $this->getReturnUrl(),
             'urlStatus' => $this->getNotifyUrl(),
+            'urlCardPaymentNotification' => $this->getCardNotifyUrl(),
+            'timeLimit' => $this->getTimeLimit(),
+            'channel' => $this->getChannel(),
+            'waitForResult' => $this->getWaitForResult(),
+            'regulationAccept' => $this->getRegulationAccept(),
+            'shipping' => $this->getShipping() ? $this->internalAmountValue($this->getShipping()) : null,
+            'transferLabel' => $this->getTransactionLabel(),
+            'encoding' => $this->getEncoding(),
+            'methodRefId' => $this->getMethodRefId(),
+            // alias for credit card
+            // TODO
+            // 'cart' => ???
+            // 'additional' => ???
             'sign' => $this->generateSignature(),
         ];
 
-        if (null !== $this->getChannel()) {
-            $data['channel'] = $this->getChannel();
-        }
-
-        return $data;
+        return array_filter($data, function ($val) {
+            return ! is_null($val);
+        });
     }
 
-    public function sendData($data)
+    public function sendData($data): PurchaseResponse
     {
         $httpResponse = $this->sendRequest('POST', 'transaction/register', $data);
 

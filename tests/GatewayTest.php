@@ -111,7 +111,7 @@ class GatewayTest extends GatewayTestCase
     }
 
     /**
-     * @test        VarDumper::dump($data);
+     * @test
      */
     public function it_should_create_a_test_access()
     {
@@ -147,6 +147,15 @@ class GatewayTest extends GatewayTestCase
         ]);
         $request->setAmount('10.00');
         $this->assertSame('10.00', $request->getAmount());
+    }
+
+    public function it_should_set_and_get_shipping_on_purchase()
+    {
+        $request = $this->gateway->purchase([
+            'amount' => '1000',
+        ]);
+        $request->setShipping('12.34');
+        $this->assertSame('12.34', $request->getShipping());
     }
 
     /**

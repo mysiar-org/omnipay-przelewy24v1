@@ -108,8 +108,14 @@ abstract class AbstractRequest extends BaseAbstractRequest
         );
     }
 
-    protected function internalAmountValue(): int
+    /**
+     * @param mixed $value
+     * @throws
+     */
+    protected function internalAmountValue($value = null): int
     {
-        return (int) bcmul($this->getAmount(), '100', 2);
+        $amount = $value ?? $this->getAmount();
+
+        return (int) bcmul((string) $amount, '100', 2);
     }
 }
