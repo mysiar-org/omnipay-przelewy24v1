@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Omnipay\Przelewy24\Gateway;
+use Omnipay\Przelewy24\Message\CardInfoRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
@@ -159,5 +160,11 @@ class GatewayTest extends GatewayTestCase
         ]);
         $this->assertInstanceOf(CompletePurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
+    }
+
+    public function it_should_create_card_info()
+    {
+        $request = $this->gateway->cardInfo('transaction-id');
+        $this->assertInstanceOf(CardInfoRequest::class, $request);
     }
 }

@@ -2,16 +2,20 @@
 
 **Przelewy24 API V1 gateway for the Omnipay PHP payment processing library**
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE) ![example workflow](https://github.com/mysiar/omnipay-przelewy24v1/actions/workflows/tests.yml/badge.svg)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style)](LICENSE)
+[![Latest Version](https://img.shields.io/github/release/mysiar/omnipay-przelewy24v1.svg)](https://github.com/mysiar/omnipay-przelewy24v1/releases)
+[![Total downloads](https://img.shields.io/packagist/dt/mysiar/omnipay-przelewy24v1.svg)](https://packagist.org/packages/mysiar/omnipay-przelewy24v1)
+[![CI](https://github.com/mysiar/omnipay-przelewy24v1/actions/workflows/tests.yml/badge.svg)](https://github.com/mysiar/omnipay-przelewy24v1/actions)
 
 ## API endpoints implemented
 
-| API endpoint                 | Gateway method    |
-|:-----------------------------|:------------------|
-| /api/v1/testAccess           | testAccess        |
-| /api/v1/payment/methods      | methods           |
-| /api/v1/transaction/register | purchase          |
-| /api/v1/transaction/verify   | completePurchase  |
+| API endpoint                 | Gateway method   |
+|:-----------------------------|:-----------------|
+| /api/v1/testAccess           | testAccess       |
+| /api/v1/payment/methods      | methods          |
+| /api/v1/transaction/register | purchase         |
+| /api/v1/transaction/verify   | completePurchase |
+| /api/v1/card/info            | cardInfo         |
 
 ## Install
 
@@ -60,7 +64,9 @@ $params = [
 $response = $gateway->purchase($params)->send();
 ```
 
-For more exmples check `tests-api/GatewayTest.php`
+For more examples check 
+* [tests-api/GatewayTest.php](tests-api/GatewayTest.php)
+* [tests/Message/](tests/Message/)
 
 Optionally you can specify the payment channels.
 
