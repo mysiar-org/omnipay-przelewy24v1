@@ -18,7 +18,7 @@ class PurchaseInfoResponse extends AbstractResponse
     {
         parent::__construct($request, $data);
         if (isset($data['data'])) {
-            $this->info = $data['data'];
+            $this->info = $this->formatInfo($data['data']);
         }
     }
 
@@ -41,5 +41,42 @@ class PurchaseInfoResponse extends AbstractResponse
         }
 
         return self::HTTP_OK;
+    }
+
+    /**
+     * @param string[] $data
+     * @return string[]
+     */
+    private function formatInfo(array $data): array
+    {
+        $formatted = $data;
+
+        // format
+        if (isset($formatted['amount'])) {
+            $formatted['amount'] = $this->getAmountFromInternal((int) $formatted['amount']);
+        }
+
+        // replace keys
+        $formatted = $this->replaceInfoKeys($formatted, 'clientEmail', 'email');
+        $formatted = $this->replaceInfoKeys($formatted, 'clientName', 'name');
+        $formatted = $this->replaceInfoKeys($formatted, 'clientAddress', 'address');
+        $formatted = $this->replaceInfoKeys($formatted, 'clientCity', 'city');
+        $formatted = $this->replaceInfoKeys($formatted, 'clientPostcode', 'postcode');
+
+        return $formatted;
+    }
+
+    /**
+     * @param string[] $data
+     * @return string[]
+     */
+    private function replaceInfoKeys(array $data, string $oldKey, string $newKey): array
+    {
+        if (isset($data[$oldKey])) {
+            $data[$newKey] = $data[$oldKey];
+            unset($data[$oldKey]);
+        }
+
+        return $data;
     }
 }

@@ -40,5 +40,23 @@ class PurchaseInfoRequestTest extends TestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertCount(18, $response->getInfo());
+
+        $this->assertSame(1234567890, $response->getInfo()['orderId']);
+        $this->assertSame('20c62d6b-5ff0-46a0-97eb-eea0dd5b4a93', $response->getInfo()['sessionId']);
+        $this->assertSame(1, $response->getInfo()['status']);
+        $this->assertSame('12.34', $response->getInfo()['amount']);
+        $this->assertSame('PLN', $response->getInfo()['currency']);
+        $this->assertSame('202205161730', $response->getInfo()['date']);
+        $this->assertSame('202205161730', $response->getInfo()['dateOfTransaction']);
+        $this->assertSame(154, $response->getInfo()['paymentMethod']);
+        $this->assertSame('transaction description', $response->getInfo()['description']);
+        $this->assertSame(0, $response->getInfo()['batchId']);
+        $this->assertSame("12", $response->getInfo()['fee']);
+        $this->assertSame("P24-K12-B34-H56", $response->getInfo()['statement']);
+        $this->assertSame('franek@dolas.com', $response->getInfo()['email']);
+        $this->assertSame('Franek Dolas', $response->getInfo()['name']);
+        $this->assertSame('Kościuszki 12', $response->getInfo()['address']);
+        $this->assertSame('Kraków', $response->getInfo()['city']);
+        $this->assertSame('30-611', $response->getInfo()['postcode']);
     }
 }
