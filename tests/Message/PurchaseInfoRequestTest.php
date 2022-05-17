@@ -59,4 +59,37 @@ class PurchaseInfoRequestTest extends TestCase
         $this->assertSame('Kraków', $response->getInfo()['city']);
         $this->assertSame('30-611', $response->getInfo()['postcode']);
     }
+
+    public function testSendAuthFailure()
+    {
+        $this->setMockHttpResponse('PurchaseInfoAuthFailure.txt');
+        $response = $this->request->send();
+
+        $this->assertInstanceOf(PurchaseInfoResponse::class, $response);
+        $this->assertFalse($response->isSuccessful());
+        $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getCode());
+        $this->assertSame('Incorrect authentication', $response->getMessage());
+    }
+
+    public function testSendInvalidDataFailure()
+    {
+        $this->setMockHttpResponse('PurchaseInfoInvalidDataFailure.txt');
+        $response = $this->request->send();
+
+        $this->assertInstanceOf(PurchaseInfoResponse::class, $response);
+        $this->assertFalse($response->isSuccessful());
+        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getCode());
+        $this->assertSame('Invalid input data', $response->getMessage());
+    }
+
+    public function testSendNotFoundFailure()
+    {
+        $this->setMockHttpResponse('PurchaseInfoNotFoundFailure.txt');
+        $response = $this->request->send();
+
+        $this->assertInstanceOf(PurchaseInfoResponse::class, $response);
+        $this->assertFalse($response->isSuccessful());
+        $this->assertSame(Response::HTTP_NOT_FOUND, $response->getCode());
+        $this->assertSame('Transaction not found', $response->getMessage());
+    }
 }
