@@ -40,7 +40,7 @@ class PurchaseInfoResponse extends AbstractResponse
             return $this->data['code'];
         }
 
-        return self::HTTP_OK;
+        return Response::HTTP_OK;
     }
 
     /**

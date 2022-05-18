@@ -143,6 +143,9 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('10.00', $request->getAmount());
     }
 
+    /**
+     * @test
+     */
     public function it_should_set_and_get_amount_on_purchase()
     {
         $request = $this->gateway->purchase([
@@ -152,6 +155,9 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('10.00', $request->getAmount());
     }
 
+    /**
+     * @test
+     */
     public function it_should_set_and_get_shipping_on_purchase()
     {
         $request = $this->gateway->purchase([
@@ -200,6 +206,25 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame($urlStatus, $request->getUrlStatus());
     }
 
+    /**
+     * @test
+     */
+    public function it_should_create_a_purchase_info()
+    {
+        $request = $this->gateway->purchaseInfo('session-id');
+        $this->assertInstanceOf(PurchaseInfoRequest::class, $request);
+        $this->assertSame('session-id', $request->getSessionId());
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_card_info()
+    {
+        $request = $this->gateway->cardInfo('transaction-id');
+        $this->assertInstanceOf(CardInfoRequest::class, $request);
+    }
+
     public function refund_data_provider(): array
     {
         return [
@@ -227,21 +252,5 @@ class GatewayTest extends GatewayTestCase
                 'urlStatus' => '15215215',
             ],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function it_should_create_a_purchase_info()
-    {
-        $request = $this->gateway->purchaseInfo('session-id');
-        $this->assertInstanceOf(PurchaseInfoRequest::class, $request);
-        $this->assertSame('session-id', $request->getSessionId());
-    }
-
-    public function it_should_create_card_info()
-    {
-        $request = $this->gateway->cardInfo('transaction-id');
-        $this->assertInstanceOf(CardInfoRequest::class, $request);
     }
 }
