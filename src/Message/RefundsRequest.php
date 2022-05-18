@@ -73,7 +73,7 @@ class RefundsRequest extends AbstractRequest
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response = new RefundsResponse($this, $responseData, $this->getEndpoint());
+        return $this->response = new RefundsResponse($this, $responseData);
     }
 
     /**

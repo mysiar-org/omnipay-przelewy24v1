@@ -12,9 +12,9 @@ class RefundsResponse extends AbstractResponse
 
     private $responseCode;
 
-    public function __construct(RequestInterface $request, $data, $endpoint)
+    public function __construct(RequestInterface $request, $data)
     {
-        parent::__construct($request, $data, $endpoint);
+        parent::__construct($request, $data);
         $this->refunds = $data['data'] ?? null;
         if (isset($data['responseCode'])) {
             $this->responseCode = (int) $data['responseCode'];
