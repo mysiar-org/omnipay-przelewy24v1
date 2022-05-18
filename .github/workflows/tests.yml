@@ -1,4 +1,4 @@
-name: Test Omnipay Przelewy24 API V1
+name: CI
 on:
   push:
     branches:
