@@ -9,6 +9,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style)](LICENSE)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmysiar%2Fomnipay-przelewy24v1.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmysiar%2Fomnipay-przelewy24v1?ref=badge_shield)
 [![PHP Version Require](http://poser.pugx.org/mysiar/omnipay-przelewy24v1/require/php)](https://packagist.org/packages/mysiar/omnipay-przelewy24v1)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mysiar/omnipay-przelewy24v1/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/mysiar/omnipay-przelewy24v1/?branch=main)
 
 ## API endpoints implemented
 
@@ -18,9 +19,9 @@
 | /api/v1/payment/methods          | methods          |
 | /api/v1/transaction/register     | purchase         |
 | /api/v1/transaction/verify       | completePurchase |
+| /api/v1/transaction/refund       | refund           |
 | /api/v1/transaction/by/sessionId | purchaseInfo     |
 | /api/v1/card/info                | cardInfo         |
-| /api/v1/transaction/refund       | refund           |
 
 ## Install
 
