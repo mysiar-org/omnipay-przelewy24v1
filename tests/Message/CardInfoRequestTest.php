@@ -77,8 +77,8 @@ class CardInfoRequestTest extends TestCase
         $this->assertSame('ref-id', $response->getInfo()['refId']);
         $this->assertSame(0, $response->getInfo()['bin']);
         $this->assertSame('xxxx-xxxx-xxxx-1234', $response->getInfo()['mask']);
-        $this->assertSame('VISA', $response->getInfo()['cardType']);
-        $this->assertSame('202505', $response->getInfo()['cardDate']);
+        $this->assertSame('VISA', $response->getInfo()['brand']);
+        $this->assertSame('202505', $response->getInfo()['expiry']);
         $this->assertSame('e0dfeab6-39c2-42cb-b96e-fb0d6d48d503', $response->getInfo()['hash']);
     }
 }

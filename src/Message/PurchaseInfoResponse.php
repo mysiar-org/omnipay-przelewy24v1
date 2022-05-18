@@ -65,18 +65,4 @@ class PurchaseInfoResponse extends AbstractResponse
 
         return $formatted;
     }
-
-    /**
-     * @param string[] $data
-     * @return string[]
-     */
-    private function replaceInfoKeys(array $data, string $oldKey, string $newKey): array
-    {
-        if (isset($data[$oldKey])) {
-            $data[$newKey] = $data[$oldKey];
-            unset($data[$oldKey]);
-        }
-
-        return $data;
-    }
 }

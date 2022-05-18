@@ -50,4 +50,18 @@ abstract class AbstractResponse extends BaseAbstractResponse
     {
         return bcdiv((string) $amount, '100', 2);
     }
+
+    /**
+     * @param string[] $data
+     * @return string[]
+     */
+    protected function replaceInfoKeys(array $data, string $oldKey, string $newKey): array
+    {
+        if (isset($data[$oldKey])) {
+            $data[$newKey] = $data[$oldKey];
+            unset($data[$oldKey]);
+        }
+
+        return $data;
+    }
 }

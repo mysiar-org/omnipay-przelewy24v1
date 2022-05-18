@@ -17,7 +17,7 @@ class CardInfoResponse extends AbstractResponse
     {
         parent::__construct($request, $data);
         if (isset($data['data'])) {
-            $this->info = $data['data'];
+            $this->info = $this->formatInfo($data['data']);
         }
     }
 
@@ -27,5 +27,20 @@ class CardInfoResponse extends AbstractResponse
     public function getInfo(): array
     {
         return $this->info;
+    }
+
+    /**
+     * @param string[] $data
+     * @return string[]
+     */
+    private function formatInfo(array $data): array
+    {
+        $formatted = $data;
+
+        // replace keys
+        $formatted = $this->replaceInfoKeys($formatted, 'cardType', 'brand');
+        $formatted = $this->replaceInfoKeys($formatted, 'cardDate', 'expiry');
+
+        return $formatted;
     }
 }
