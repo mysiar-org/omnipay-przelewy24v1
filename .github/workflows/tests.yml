@@ -26,5 +26,13 @@ jobs:
         run: composer install
       - name: Coding standard
         run: php${{ matrix.php }} ./vendor/bin/ecs check src tests
-      - name: PHPUnit
+      - name: PHPUnit tests
         run: php${{ matrix.php }} ./vendor/bin/phpunit --testdox --verbose --stop-on-failure
+      - name: Code coverage
+        run: php${{ matrix.php }} -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=var/coverage.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./var/coverage.xml
+          fail_ci_if_error: true
