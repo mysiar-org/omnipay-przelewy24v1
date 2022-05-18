@@ -38,8 +38,5 @@
     "omnipay/tests": "^3",
     "symplify/easy-coding-standard": "^10.2",
     "symfony/var-dumper": "^5.4"
-  },
-  "scripts": {
-    "test": "phpunit"
   }
 }

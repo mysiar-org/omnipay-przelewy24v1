@@ -1,0 +1,32 @@
+HTTP/1.1 201 Created
+Server: nginx/1.4.4
+Date: Sat, 16 May 2022 17:30:00 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+X-Request-Id: 53e398c2-1c9a-4e8b-a3a7-9dcf3cad90b1
+
+{
+  "error": "",
+  "data": {
+        "orderId": 1234567890,
+        "sessionId": "20c62d6b-5ff0-46a0-97eb-eea0dd5b4a93",
+        "status": 1,
+        "amount": "1234",
+        "currency": "PLN",
+        "date": "202205161730",
+        "dateOfTransaction": "202205161730",
+        "clientEmail": "franek@dolas.com",
+        "accountMD5": "",
+        "paymentMethod": 154,
+        "description": "transaction description",
+        "clientName": "Franek Dolas",
+        "clientAddress": "Kościuszki 12",
+        "clientCity": "Kraków",
+        "clientPostcode": "30-611",
+        "batchId": 0,
+        "fee": "12",
+        "statement": "P24-K12-B34-H56"
+  },
+  "responseCode": 0
+}

@@ -108,7 +108,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
         );
     }
 
-    protected function internalAmountValue(?int $value = null): int
+    /**
+     * @param mixed $value
+     * @throws
+     */
+    protected function internalAmountValue($value = null): int
     {
         $amount = $value ?? $this->getAmount();
 
