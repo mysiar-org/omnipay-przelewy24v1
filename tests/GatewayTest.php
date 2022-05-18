@@ -6,6 +6,7 @@ use Omnipay\Przelewy24\Gateway;
 use Omnipay\Przelewy24\Message\CardInfoRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
+use Omnipay\Przelewy24\Message\PurchaseInfoRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
 use Omnipay\Tests\GatewayTestCase;
@@ -112,7 +113,7 @@ class GatewayTest extends GatewayTestCase
     }
 
     /**
-     * @test        VarDumper::dump($data);
+     * @test
      */
     public function it_should_create_a_test_access()
     {
@@ -150,6 +151,15 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('10.00', $request->getAmount());
     }
 
+    public function it_should_set_and_get_shipping_on_purchase()
+    {
+        $request = $this->gateway->purchase([
+            'amount' => '1000',
+        ]);
+        $request->setShipping('12.34');
+        $this->assertSame('12.34', $request->getShipping());
+    }
+
     /**
      * @test
      */
@@ -160,6 +170,16 @@ class GatewayTest extends GatewayTestCase
         ]);
         $this->assertInstanceOf(CompletePurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_a_purchase_info()
+    {
+        $request = $this->gateway->purchaseInfo('session-id');
+        $this->assertInstanceOf(PurchaseInfoRequest::class, $request);
+        $this->assertSame('session-id', $request->getSessionId());
     }
 
     public function it_should_create_card_info()

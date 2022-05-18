@@ -9,13 +9,14 @@
 
 ## API endpoints implemented
 
-| API endpoint                 | Gateway method   |
-|:-----------------------------|:-----------------|
-| /api/v1/testAccess           | testAccess       |
-| /api/v1/payment/methods      | methods          |
-| /api/v1/transaction/register | purchase         |
-| /api/v1/transaction/verify   | completePurchase |
-| /api/v1/card/info            | cardInfo         |
+| API endpoint                     | Gateway method   |
+|:---------------------------------|:-----------------|
+| /api/v1/testAccess               | testAccess       |
+| /api/v1/payment/methods          | methods          |
+| /api/v1/transaction/register     | purchase         |
+| /api/v1/transaction/verify       | completePurchase |
+| /api/v1/transaction/by/sessionId | purchaseInfo     |
+| /api/v1/card/info                | cardInfo         |
 
 ## Install
 

@@ -6,7 +6,7 @@ namespace Omnipay\Przelewy24\Message;
 
 class PurchaseResponse extends AbstractResponse
 {
-    public function getToken()
+    public function getToken(): string
     {
         if (isset($this->data['data'])) {
             return trim($this->data['data']['token']);
@@ -15,12 +15,12 @@ class PurchaseResponse extends AbstractResponse
         return '';
     }
 
-    public function getRedirectUrl()
+    public function getRedirectUrl(): string
     {
         return $this->request->getRedirectEndpoint() . 'trnRequest/' . $this->getToken();
     }
 
-    public function getRedirectMethod()
+    public function getRedirectMethod(): string
     {
         return 'GET';
     }

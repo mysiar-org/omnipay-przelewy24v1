@@ -89,10 +89,10 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('15276e08cc84868619e1054ccf15d638337cae2bced6cb5a48bb799a3b52144692bce63408db85c84a6ca0461a999885', $data['sign']);
 
         if (null === $channel) {
-            $this->assertCount(12, $data);
+            $this->assertCount(11, $data);
         } else {
             $this->assertSame($channel, $data['channel']);
-            $this->assertCount(13, $data);
+            $this->assertCount(12, $data);
         }
     }
 

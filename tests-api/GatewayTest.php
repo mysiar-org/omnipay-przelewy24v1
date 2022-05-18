@@ -7,6 +7,7 @@ namespace API;
 use Omnipay\Omnipay;
 use Omnipay\Przelewy24\Message\AbstractResponse;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\VarDumper\VarDumper;
 
 class GatewayTest extends TestCase
@@ -99,6 +100,56 @@ class GatewayTest extends TestCase
 
         VarDumper::dump($response->getCode());
         VarDumper::dump($response->getMessage());
+
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
+        $this->assertTrue($response->isSuccessful());
+    }
+
+    public function testPurchaseInfo(): void
+    {
+        $sessionId = '20c62d6b-5ff0-46a0-97eb-eea0dd5b4a93'; // real existing session
+        $response = $this->gateway->purchaseInfo($sessionId)->send();
+
+        VarDumper::dump($response->getCode());
+        VarDumper::dump($response->getInfo());
+
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertCount(18, $response->getInfo());
+
+        $response = $this->gateway->purchaseInfo('not-existing')->send();
+        $this->assertSame(Response::HTTP_NOT_FOUND, $response->getCode());
+    }
+
+    public function testPurchaseCard(): void
+    {
+        $sessionId = $this->randomString();
+
+        $request = $this->gateway->purchase([
+            'sessionId' => $sessionId,
+            'amount' => '10.66',
+            'currency' => 'PLN',
+            'description' => 'Transaction description - card',
+            'email' => 'franek@dolas.com',
+            'name' => 'Franek Dolas',
+            'country' => 'PL',
+            'returnUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/return',
+            'notifyUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/notify',
+            'cardNotifyUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/notifyCard',
+            'channel' => 218,
+        ]);
+
+        $response = $request->send();
+
+        VarDumper::dump($sessionId);
+        VarDumper::dump($response->getRedirectUrl());
+        VarDumper::dump($response->getMessage());
+
+        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame('', $response->getMessage());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertContains('https://sandbox.przelewy24.pl/trnRequest/', $response->getRedirectUrl());
+        $this->assertSame(35, strlen($response->getToken()));
     }
 
     private function randomString(int $length = 15): string
