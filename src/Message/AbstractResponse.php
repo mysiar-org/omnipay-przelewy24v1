@@ -45,4 +45,9 @@ abstract class AbstractResponse extends BaseAbstractResponse
     {
         return self::HTTP_OK === $this->getCode();
     }
+
+    protected function getAmountFromInternal(int $amount): string
+    {
+        return bcdiv((string) $amount, '100', 2);
+    }
 }
