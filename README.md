@@ -2,7 +2,13 @@
 
 **Przelewy24 API V1 gateway for the Omnipay PHP payment processing library**
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE) ![example workflow](https://github.com/mysiar/omnipay-przelewy24v1/actions/workflows/tests.yml/badge.svg)
+[![CI](https://github.com/mysiar/omnipay-przelewy24v1/actions/workflows/tests.yml/badge.svg)](https://github.com/mysiar/omnipay-przelewy24v1/actions)
+[![codecov](https://codecov.io/gh/mysiar/omnipay-przelewy24v1/branch/main/graph/badge.svg?token=gW4QFlc4lw)](https://codecov.io/gh/mysiar/omnipay-przelewy24v1)
+[![Latest Version](https://img.shields.io/github/release/mysiar/omnipay-przelewy24v1.svg)](https://github.com/mysiar/omnipay-przelewy24v1/releases)
+[![Total downloads](https://img.shields.io/packagist/dt/mysiar/omnipay-przelewy24v1.svg)](https://packagist.org/packages/mysiar/omnipay-przelewy24v1)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style)](LICENSE)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmysiar%2Fomnipay-przelewy24v1.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmysiar%2Fomnipay-przelewy24v1?ref=badge_shield)
+[![PHP Version Require](http://poser.pugx.org/mysiar/omnipay-przelewy24v1/require/php)](https://packagist.org/packages/mysiar/omnipay-przelewy24v1)
 
 ## API endpoints implemented
 
@@ -13,6 +19,7 @@
 | /api/v1/transaction/register     | purchase         |
 | /api/v1/transaction/verify       | completePurchase |
 | /api/v1/transaction/by/sessionId | purchaseInfo     |
+| /api/v1/card/info                | cardInfo         |
 
 ## Install
 
@@ -61,7 +68,9 @@ $params = [
 $response = $gateway->purchase($params)->send();
 ```
 
-For more exmples check `tests-api/GatewayTest.php`
+For more examples check 
+* [tests-api/GatewayTest.php](tests-api/GatewayTest.php)
+* [tests/Message/](tests/Message/)
 
 Optionally you can specify the payment channels.
 

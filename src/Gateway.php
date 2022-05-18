@@ -6,6 +6,7 @@ namespace Omnipay\Przelewy24;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Przelewy24\Message\CardInfoRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseInfoRequest;
@@ -149,6 +150,16 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest(PurchaseInfoRequest::class, [
             'sessionId' => $sessionId,
+        ]);
+    }
+
+    /**
+     * @return AbstractRequest|CardInfoRequest
+     */
+    public function cardInfo(string $transactionId): CardInfoRequest
+    {
+        return $this->createRequest(CardInfoRequest::class, [
+            'transactionId' => $transactionId,
         ]);
     }
 }

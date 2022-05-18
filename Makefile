@@ -6,3 +6,9 @@ cs-fix:
 
 changelog:
 	npx auto-changelog -o CHANGELOG.md
+
+test:
+	./vendor/bin/phpunit --no-coverage
+
+coverage:
+	php -d xdebug.mode=coverage ./vendor/bin/phpunit
