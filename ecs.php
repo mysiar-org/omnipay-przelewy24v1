@@ -21,9 +21,9 @@ return static function (ECSConfig $ecsConfig): void {
             'syntax' => 'short',
         ]]);
 
-     $ecsConfig->import(SetList::SPACES);
-     $ecsConfig->import(SetList::ARRAY);
-     $ecsConfig->import(SetList::DOCBLOCK);
-     $ecsConfig->import(SetList::PSR_12);
-     $ecsConfig->import(SetList::CLEAN_CODE);
+    $ecsConfig->import(SetList::SPACES);
+    $ecsConfig->import(SetList::ARRAY);
+    $ecsConfig->import(SetList::DOCBLOCK);
+    $ecsConfig->import(SetList::PSR_12);
+    $ecsConfig->import(SetList::CLEAN_CODE);
 };

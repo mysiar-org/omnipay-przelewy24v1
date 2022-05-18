@@ -133,7 +133,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function setShipping($value): self
     {
-        return $this->setParameter('regulationAccept', $value);
+        return $this->setParameter('shipping', $value);
     }
 
     public function getTransactionLabel(): ?string

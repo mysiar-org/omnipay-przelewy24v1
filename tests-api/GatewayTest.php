@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace API;
 
 use Omnipay\Omnipay;
-use Omnipay\Przelewy24\Message\AbstractResponse;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\VarDumper\VarDumper;
@@ -32,7 +31,7 @@ class GatewayTest extends TestCase
     public function testAccess(): void
     {
         $response = $this->gateway->testAccess()->send();
-        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
         $this->assertTrue($response->isSuccessful());
 
@@ -40,14 +39,14 @@ class GatewayTest extends TestCase
         $response = $this->gateway->testAccess()->send();
 
         $this->assertFalse($response->isSuccessful());
-        $this->assertSame(AbstractResponse::HTTP_UNAUTHORIZED, $response->getCode());
+        $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getCode());
         $this->assertSame("Incorrect authentication", $response->getMessage());
     }
 
     public function testMethods(): void
     {
         $response = $this->gateway->methods()->send();
-        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
         $this->assertTrue($response->isSuccessful());
         $this->assertGreaterThan(0, count($response->getMethods()));
@@ -72,7 +71,7 @@ class GatewayTest extends TestCase
         VarDumper::dump($response->getRedirectUrl());
         VarDumper::dump($response->getMessage());
 
-        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
         $this->assertTrue($response->isSuccessful());
         $this->assertContains('https://sandbox.przelewy24.pl/trnRequest/', $response->getRedirectUrl());

@@ -20,6 +20,7 @@
 | /api/v1/transaction/verify       | completePurchase |
 | /api/v1/transaction/by/sessionId | purchaseInfo     |
 | /api/v1/card/info                | cardInfo         |
+| /api/v1/transaction/refund       | refund           |
 
 ## Install
 
@@ -34,6 +35,8 @@ $ composer require mysiar/omnipay-przelewy24v1
 The following gateways are provided by this package:
 
 * Przelewy24
+
+Reference official documentation https://developers.przelewy24.pl/index.php
 
 ## Example
 
