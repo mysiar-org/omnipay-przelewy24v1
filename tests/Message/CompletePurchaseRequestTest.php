@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Message;
 
-use Omnipay\Przelewy24\Message\AbstractResponse;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseResponse;
 use Omnipay\Tests\TestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class CompletePurchaseRequestTest extends TestCase
 {
@@ -51,7 +51,7 @@ class CompletePurchaseRequestTest extends TestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertSame('', $response->getMessage());
-        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
     }
 
     public function testSendFailure()
@@ -61,7 +61,7 @@ class CompletePurchaseRequestTest extends TestCase
 
         $this->assertInstanceOf(CompletePurchaseResponse::class, $response);
         $this->assertFalse($response->isSuccessful());
-        $this->assertSame(AbstractResponse::HTTP_BAD_REQUEST, $response->getCode());
+        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getCode());
         $this->assertSame('Incorrect CRC value', $response->getMessage());
     }
 }

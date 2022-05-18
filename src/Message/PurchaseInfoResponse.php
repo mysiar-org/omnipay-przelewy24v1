@@ -40,7 +40,7 @@ class PurchaseInfoResponse extends AbstractResponse
             return $this->data['code'];
         }
 
-        return self::HTTP_OK;
+        return Response::HTTP_OK;
     }
 
     /**
@@ -64,19 +64,5 @@ class PurchaseInfoResponse extends AbstractResponse
         $formatted = $this->replaceInfoKeys($formatted, 'clientPostcode', 'postcode');
 
         return $formatted;
-    }
-
-    /**
-     * @param string[] $data
-     * @return string[]
-     */
-    private function replaceInfoKeys(array $data, string $oldKey, string $newKey): array
-    {
-        if (isset($data[$oldKey])) {
-            $data[$newKey] = $data[$oldKey];
-            unset($data[$oldKey]);
-        }
-
-        return $data;
     }
 }

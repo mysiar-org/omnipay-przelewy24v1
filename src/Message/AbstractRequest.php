@@ -104,7 +104,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
                     base64_encode(sprintf('%s:%s', $this->getMerchantId(), $this->getReportKey()))
                 ),
             ],
-            empty($data) ? null : json_encode($data)
+            empty($data) ? null : json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
         );
     }
 

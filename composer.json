@@ -17,6 +17,10 @@
     {
       "name": "Piotr Synowiec",
       "email": "psynowiec@gmail.com"
+    },
+    {
+      "name": "Adam Migacz",
+      "email": "smigi1997@gmail.com"
     }
   ],
   "autoload": {
@@ -26,15 +30,13 @@
   },
   "require": {
     "omnipay/common": "^3",
+    "ext-json": "*",
     "ext-bcmath": "*",
-    "ext-json": "*"
+    "php": "^7.2|^8.0"
   },
   "require-dev": {
     "omnipay/tests": "^3",
     "symplify/easy-coding-standard": "^10.2",
     "symfony/var-dumper": "^5.4"
-  },
-  "scripts": {
-    "test": "phpunit"
   }
 }
