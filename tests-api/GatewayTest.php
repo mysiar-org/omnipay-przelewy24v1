@@ -101,6 +101,37 @@ class GatewayTest extends TestCase
         VarDumper::dump($response->getMessage());
     }
 
+    public function testPurchaseCard(): void
+    {
+        $sessionId = $this->randomString();
+
+        $request = $this->gateway->purchase([
+            'sessionId' => $sessionId,
+            'amount' => '10.66',
+            'currency' => 'PLN',
+            'description' => 'Transaction description - card',
+            'email' => 'franek@dolas.com',
+            'name' => 'Franek Dolas',
+            'country' => 'PL',
+            'returnUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/return',
+            'notifyUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/notify',
+            'cardNotifyUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/notifyCard',
+            'channel' => 218,
+        ]);
+
+        $response = $request->send();
+
+        VarDumper::dump($sessionId);
+        VarDumper::dump($response->getRedirectUrl());
+        VarDumper::dump($response->getMessage());
+
+        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame('', $response->getMessage());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertContains('https://sandbox.przelewy24.pl/trnRequest/', $response->getRedirectUrl());
+        $this->assertSame(35, strlen($response->getToken()));
+    }
+
     private function randomString(int $length = 15): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
