@@ -17,7 +17,7 @@ class CardInfoRequest extends AbstractRequest
 
     public function sendData($data): CardInfoResponse
     {
-        $httpResponse = $this->sendRequest('GET', sprintf('/api/v1/card/info/%s', $data['transactionId']), []);
+        $httpResponse = $this->sendRequest('GET', sprintf('card/info/%s', $data['transactionId']), []);
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 

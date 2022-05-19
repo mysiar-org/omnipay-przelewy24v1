@@ -135,7 +135,7 @@ class GatewayTest extends TestCase
             'returnUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/return',
             'notifyUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/notify',
             'cardNotifyUrl' => 'https://omnipay-przelewy24v1.requestcatcher.com/notifyCard',
-            'channel' => 218,
+            'channel' => 1,
         ]);
 
         $response = $request->send();
@@ -144,11 +144,20 @@ class GatewayTest extends TestCase
         VarDumper::dump($response->getRedirectUrl());
         VarDumper::dump($response->getMessage());
 
-        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
         $this->assertTrue($response->isSuccessful());
         $this->assertContains('https://sandbox.przelewy24.pl/trnRequest/', $response->getRedirectUrl());
         $this->assertSame(35, strlen($response->getToken()));
+    }
+
+    public function testCardInfo(): void
+    {
+        $transactionId = '317229535';
+        $this->markTestSkipped('Comment this out if you have payment with credit card');
+        $response = $this->gateway->cardInfo($transactionId)->send();
+        dump($response->getCode());
+        dump($response->getInfo());
     }
 
     private function randomString(int $length = 15): string
