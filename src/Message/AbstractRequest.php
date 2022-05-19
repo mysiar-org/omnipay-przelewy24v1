@@ -99,6 +99,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
             $this->getEndpoint() . $endpoint,
             [
                 'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
                 'Authorization' => sprintf(
                     'Basic %s',
                     base64_encode(sprintf('%s:%s', $this->getMerchantId(), $this->getReportKey()))
