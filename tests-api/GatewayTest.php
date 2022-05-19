@@ -144,7 +144,7 @@ class GatewayTest extends TestCase
         VarDumper::dump($response->getRedirectUrl());
         VarDumper::dump($response->getMessage());
 
-        $this->assertSame(AbstractResponse::HTTP_OK, $response->getCode());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
         $this->assertTrue($response->isSuccessful());
         $this->assertContains('https://sandbox.przelewy24.pl/trnRequest/', $response->getRedirectUrl());

@@ -36,3 +36,8 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./var/coverage.xml
           fail_ci_if_error: true
+      - name: Upload coverage to Scrutinizer
+        run: |
+          wget https://scrutinizer-ci.com/ocular.phar
+          cp var/coverage.xml var/coverage.clover
+          php${{ matrix.php }} ocular.phar code-coverage:upload --access-token="${{ secrets.SCRUTINIZER_TOKEN }}" --format=php-clover var/coverage.clover
