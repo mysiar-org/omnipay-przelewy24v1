@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use Omnipay\Przelewy24\Gateway;
+use Omnipay\Przelewy24\Message\CardChargeRequest;
 use Omnipay\Przelewy24\Message\CardInfoRequest;
+use Omnipay\Przelewy24\Message\CardPayRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseInfoRequest;
@@ -223,6 +225,24 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->cardInfo('transaction-id');
         $this->assertInstanceOf(CardInfoRequest::class, $request);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_card_pay()
+    {
+        $request = $this->gateway->cardPay([]);
+        $this->assertInstanceOf(CardPayRequest::class, $request);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_create_card_charge()
+    {
+        $request = $this->gateway->cardCharge([]);
+        $this->assertInstanceOf(CardChargeRequest::class, $request);
     }
 
     public function refund_data_provider(): array
