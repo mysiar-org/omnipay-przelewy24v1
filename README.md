@@ -22,6 +22,7 @@
 | /api/v1/transaction/refund       | refund           |
 | /api/v1/transaction/by/sessionId | purchaseInfo     |
 | /api/v1/card/info                | cardInfo         |
+| /api/v1/card/pay                 | cardPay          |
 
 ## Install
 
