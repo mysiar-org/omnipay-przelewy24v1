@@ -1,0 +1,663 @@
+HTTP/1.1 422 Unprocessable Entity
+Server: nginx/1.4.4
+Date: Sat, 20 May 2022 17:00:00 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 101
+Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, POST, HEAD, OPTIONS, DELETE
+Access-Control-Max-Age: 300
+Cache-Control: no-cache, no-store
+Strict-Transport-Security: max-age=31556926; includeSubDomains
+
+{
+    "data": [
+        {
+            "name": "Przelew z BPH",
+            "id": 35,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/35",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/35",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "08-20",
+                "saturday": "unavailable",
+                "sunday": "unavailable"
+            }
+        },
+        {
+            "name": "Credit Agricole",
+            "id": 45,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/45",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/45",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Toyota Bank",
+            "id": 64,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/64",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/64",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Allianz Bank",
+            "id": 68,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/68",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/68",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "08-18",
+                "saturday": "unavailable",
+                "sunday": "unavailable"
+            }
+        },
+        {
+            "name": "Volkswagen Bank",
+            "id": 69,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": false,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/69",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/69",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "07-24",
+                "saturday": "unavailable",
+                "sunday": "unavailable"
+            }
+        },
+        {
+            "name": "Polbank",
+            "id": 82,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/82",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/82",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "unavailable",
+                "sunday": "unavailable"
+            }
+        },
+        {
+            "name": "Bank Millennium",
+            "id": 85,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/85",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/85",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "05-22",
+                "saturday": "05-22",
+                "sunday": "unavailable"
+            }
+        },
+        {
+            "name": "SkyCash",
+            "id": 87,
+            "group": "Wallet",
+            "subgroup": "Wallet",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/87",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/87",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Euro Bank",
+            "id": 94,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/94",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/94",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "mPay",
+            "id": 97,
+            "group": "Wallet",
+            "subgroup": "Wallet",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/97",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/97",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Pay with BOŚ",
+            "id": 99,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/99",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/99",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Raiffeisen Bank PBL",
+            "id": 102,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/102",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/102",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "DnB Nord",
+            "id": 103,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/103",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/103",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "08-18",
+                "saturday": "unavailable",
+                "sunday": "unavailable"
+            }
+        },
+        {
+            "name": "E-SKOK",
+            "id": 105,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/105",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/105",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "db Transfer",
+            "id": 110,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/110",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/110",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Pay with CitiHandlowy",
+            "id": 119,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/119",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/119",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "T-Mobile Usługi Bankowe",
+            "id": 121,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/121",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/121",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Alior - Raty",
+            "id": 129,
+            "group": "Installments",
+            "subgroup": "Installments",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/129",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/129",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Pay with Plus Bank",
+            "id": 131,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/131",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/131",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Pay with IKO",
+            "id": 135,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/135",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/135",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "mBank - Raty",
+            "id": 136,
+            "group": "Installments",
+            "subgroup": "Installments",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/136",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/136",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "e-transfer Pocztowy24",
+            "id": 141,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/141",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/141",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Banki Spółdzielcze",
+            "id": 143,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/143",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/143",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Podkarpacki BS",
+            "id": 144,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/144",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/144",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Getin Bank",
+            "id": 153,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/153",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/153",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "BLIK - PSP",
+            "id": 154,
+            "group": "Blik",
+            "subgroup": "Blik",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/154",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/154",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Noble Pay",
+            "id": 158,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/158",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/158",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "eBGŻ",
+            "id": 160,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/160",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/160",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Pay with IdeaBank",
+            "id": 161,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/161",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/161",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Pay in Żabka",
+            "id": 176,
+            "group": "eTransfer",
+            "subgroup": "eTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/176",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/176",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Use prepayment",
+            "id": 177,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/177",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/177",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": true,
+                "saturday": true,
+                "sunday": true
+            }
+        },
+        {
+            "name": "Manual transfer",
+            "id": 178,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/178",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/178",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": true,
+                "saturday": true,
+                "sunday": true
+            }
+        },
+        {
+            "name": "Credit Card",
+            "id": 218,
+            "group": "Credit Card",
+            "subgroup": "Credit Card",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/218",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/218",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "NestPrzelew",
+            "id": 222,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/222",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/222",
+            "mobile": false,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Google Pay",
+            "id": 229,
+            "group": "TraditionalTransfer",
+            "subgroup": "TraditionalTransfer",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/229",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/229",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "P24NOW LIMIT - pay later or installments",
+            "id": 266,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/266",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/266",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "mBank",
+            "id": 270,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/270",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/270",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "ING Bank Śląski",
+            "id": 271,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/271",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/271",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Bank Pekao S.A.",
+            "id": 273,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/273",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/273",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "PKO BP",
+            "id": 274,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/274",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/274",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Santander",
+            "id": 275,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/275",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/275",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Inteligo",
+            "id": 279,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/279",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/279",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        },
+        {
+            "name": "Alior",
+            "id": 280,
+            "group": "FastTransfers",
+            "subgroup": "FastTransfers",
+            "status": true,
+            "imgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/280",
+            "mobileImgUrl": "https://static.przelewy24.pl/payment-form-logo/svg/mobile/280",
+            "mobile": true,
+            "availabilityHours": {
+                "mondayToFriday": "00-24",
+                "saturday": "00-24",
+                "sunday": "00-24"
+            }
+        }
+    ],
+    "agreements": [],
+    "responseCode": 0
+}

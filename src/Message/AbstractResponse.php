@@ -24,6 +24,14 @@ abstract class AbstractResponse extends BaseAbstractResponse
             return (int) $this->data['code'];
         }
 
+        if (
+            ! isset($this->data['code'])
+            && isset($this->data['responseCode'])
+            && 0 !== (int) $this->data['responseCode']
+        ) {
+            return (int) $this->data['responseCode'];
+        }
+
         return Response::HTTP_OK;
     }
 
@@ -34,6 +42,14 @@ abstract class AbstractResponse extends BaseAbstractResponse
     {
         if (isset($this->data['error'])) {
             return $this->data['error'];
+        }
+
+        if (
+            Response::HTTP_NOT_FOUND === $this->getCode()
+            && isset($this->data['data'])
+            && ! is_array($this->data['data'])
+            ) {
+            return $this->data['data'];
         }
 
         return '';
