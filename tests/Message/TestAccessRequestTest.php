@@ -38,6 +38,7 @@ class TestAccessRequestTest extends TestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertSame(Response::HTTP_OK, $response->getCode());
         $this->assertSame('', $response->getMessage());
+        $this->assertTrue($response->getTest());
     }
 
     public function testSendAuthFailure()
@@ -49,6 +50,7 @@ class TestAccessRequestTest extends TestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getCode());
         $this->assertSame('Incorrect authentication', $response->getMessage());
+        $this->assertFalse($response->getTest());
     }
 
     public function testSendInvalidDataFailure()
@@ -60,5 +62,6 @@ class TestAccessRequestTest extends TestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getCode());
         $this->assertSame('Invalid input data', $response->getMessage());
+        $this->assertFalse($response->getTest());
     }
 }
