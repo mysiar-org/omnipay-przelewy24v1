@@ -72,4 +72,15 @@ class PurchaseOfflineRequestTest extends TestCase
         $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getCode());
         $this->assertSame('Invalid input data', $response->getMessage());
     }
+
+    public function testSendUnableToCreateFailure(): void
+    {
+        $this->setMockHttpResponse('PurchaseOfflineUnableToCreateFailure.txt');
+        $response = $this->request->send();
+
+        $this->assertInstanceOf(PurchaseOfflineResponse::class, $response);
+        $this->assertFalse($response->isSuccessful());
+        $this->assertSame(Response::HTTP_CONFLICT, $response->getCode());
+        $this->assertSame('Unable to create offline transaction', $response->getMessage());
+    }
 }

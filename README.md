@@ -24,6 +24,7 @@
 | /api/v1/card/info                   | cardInfo         |
 | /api/v1/card/pay                    | cardPay          |
 | /api/v1/card/charge                 | cardCharge       |
+| /api/v1/card/chargeWith3ds          | cardCharge3ds    |
 | /api/v1/transaction/registerOffline | purchaseOffline  |
 
 ## Install
