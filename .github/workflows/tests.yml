@@ -10,7 +10,7 @@ on:
       - dev
 jobs:
   tests:
-    runs-on: [ubuntu-18.04]
+    runs-on: self-hosted
     strategy:
       matrix:
         php: [7.2]
