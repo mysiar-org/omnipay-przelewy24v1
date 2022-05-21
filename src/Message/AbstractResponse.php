@@ -36,7 +36,7 @@ abstract class AbstractResponse extends BaseAbstractResponse
     }
 
     /**
-     * @return array|string|null
+     * @return null|array|string
      */
     public function getMessage()
     {
@@ -59,7 +59,7 @@ abstract class AbstractResponse extends BaseAbstractResponse
     {
         $code = $this->getCode();
 
-        return in_array($code, [Response::HTTP_CREATED, Response::HTTP_OK]);
+        return in_array($code, [Response::HTTP_CREATED, Response::HTTP_OK], true);
     }
 
     protected function getAmountFromInternal(int $amount): string
@@ -69,6 +69,7 @@ abstract class AbstractResponse extends BaseAbstractResponse
 
     /**
      * @param string[] $data
+     *
      * @return string[]
      */
     protected function replaceInfoKeys(array $data, string $oldKey, string $newKey): array

@@ -214,7 +214,7 @@ class PurchaseRequest extends AbstractRequest
         ];
 
         return array_filter($data, function ($val) {
-            return ! is_null($val);
+            return null !== $val;
         });
     }
 

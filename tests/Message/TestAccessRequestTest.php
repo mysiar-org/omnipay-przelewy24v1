@@ -16,7 +16,7 @@ class TestAccessRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new TestAccessRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([]);
@@ -41,7 +41,7 @@ class TestAccessRequestTest extends TestCase
         $this->assertTrue($response->getTest());
     }
 
-    public function testSendAuthFailure()
+    public function testSendAuthFailure(): void
     {
         $this->setMockHttpResponse('TestAccessAuthFailure.txt');
         $response = $this->request->send();
@@ -53,7 +53,7 @@ class TestAccessRequestTest extends TestCase
         $this->assertFalse($response->getTest());
     }
 
-    public function testSendInvalidDataFailure()
+    public function testSendInvalidDataFailure(): void
     {
         $this->setMockHttpResponse('TestAccessInvalidDataFailure.txt');
         $response = $this->request->send();

@@ -13,18 +13,19 @@
 
 ## API endpoints implemented
 
-| API endpoint                     | Gateway method   |
-|:---------------------------------|:-----------------|
-| /api/v1/testAccess               | testAccess       |
-| /api/v1/payment/methods          | methods          |
-| /api/v1/transaction/register     | purchase         |
-| /api/v1/transaction/verify       | completePurchase |
-| /api/v1/transaction/refund       | refund           |
-| /api/v1/transaction/by/sessionId | purchaseInfo     |
-| /api/v1/card/info                | cardInfo         |
-| /api/v1/card/pay                 | cardPay          |
-| /api/v1/card/charge              | cardCharge       |
-| /api/v1/card/chargeWith3ds       | cardCharge3ds    |
+| API endpoint                        | Gateway method   |
+|:------------------------------------|:-----------------|
+| /api/v1/testAccess                  | testAccess       |
+| /api/v1/payment/methods             | methods          |
+| /api/v1/transaction/register        | purchase         |
+| /api/v1/transaction/verify          | completePurchase |
+| /api/v1/transaction/refund          | refund           |
+| /api/v1/transaction/by/sessionId    | purchaseInfo     |
+| /api/v1/card/info                   | cardInfo         |
+| /api/v1/card/pay                    | cardPay          |
+| /api/v1/card/charge                 | cardCharge       |
+| /api/v1/card/chargeWith3ds          | cardCharge3ds    |
+| /api/v1/transaction/registerOffline | purchaseOffline  |
 
 ## Install
 
@@ -40,7 +41,7 @@ The following gateways are provided by this package:
 
 * Przelewy24
 
-Reference official documentation https://developers.przelewy24.pl/index.php
+Reference official documentation https://developers.przelewy24.pl/index.php?en
 
 ## Example
 

@@ -9,6 +9,8 @@ use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractRequest extends BaseAbstractRequest
 {
+    protected const SIGN_ALGO = 'sha384';
+
     protected $liveEndpoint = 'https://secure.przelewy24.pl/api/v1/';
 
     protected $testEndpoint = 'https://sandbox.przelewy24.pl/api/v1/';
@@ -16,8 +18,6 @@ abstract class AbstractRequest extends BaseAbstractRequest
     protected $liveRedirectEndpoint = 'https://secure.przelewy24.pl/';
 
     protected $testRedirectEndpoint = 'https://sandbox.przelewy24.pl/';
-
-    protected const SIGN_ALGO = 'sha384';
 
     public function getMerchantId()
     {
@@ -111,6 +111,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
     /**
      * @param mixed $value
+     *
      * @throws
      */
     protected function internalAmountValue($value = null): int

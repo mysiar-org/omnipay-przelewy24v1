@@ -24,7 +24,7 @@ class GatewayTest extends TestCase
             'testMode' => true,
         ];
 
-        $this->gateway = Omnipay::create("Przelewy24");
+        $this->gateway = Omnipay::create('Przelewy24');
         $this->gateway->initialize($settings);
     }
 
@@ -40,7 +40,7 @@ class GatewayTest extends TestCase
 
         $this->assertFalse($response->isSuccessful());
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getCode());
-        $this->assertSame("Incorrect authentication", $response->getMessage());
+        $this->assertSame('Incorrect authentication', $response->getMessage());
     }
 
     public function testMethods(): void
@@ -165,9 +165,10 @@ class GatewayTest extends TestCase
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; ++$i) {
             $randomString .= $characters[random_int(0, $charactersLength - 1)];
         }
+
         return $randomString;
     }
 }

@@ -16,7 +16,7 @@ class CompletePurchaseRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
@@ -30,7 +30,7 @@ class CompletePurchaseRequestTest extends TestCase
         ]);
     }
 
-    public function testGetData()
+    public function testGetData(): void
     {
         $data = $this->request->getData();
 
@@ -42,7 +42,7 @@ class CompletePurchaseRequestTest extends TestCase
         $this->assertCount(7, $data);
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('CompletePurchaseSuccess.txt');
         $response = $this->request->send();
@@ -54,7 +54,7 @@ class CompletePurchaseRequestTest extends TestCase
         $this->assertSame(Response::HTTP_OK, $response->getCode());
     }
 
-    public function testSendFailure()
+    public function testSendFailure(): void
     {
         $this->setMockHttpResponse('CompletePurchaseFailure.txt');
         $response = $this->request->send();

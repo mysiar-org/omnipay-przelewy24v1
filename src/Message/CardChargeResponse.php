@@ -11,7 +11,7 @@ class CardChargeResponse extends AbstractResponse
     /**
      * @var null|string
      */
-    private $transactionId = null;
+    private $transactionId;
 
     public function __construct(RequestInterface $request, $data)
     {

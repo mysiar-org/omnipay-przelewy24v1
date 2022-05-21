@@ -18,6 +18,7 @@ class TestAccessRequest extends AbstractRequest
 
     /**
      * @param string[] $data
+     *
      * @return ResponseInterface|TestAccessResponse
      */
     public function sendData($data): ResponseInterface
