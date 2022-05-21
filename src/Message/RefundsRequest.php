@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Omnipay\Przelewy24\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
@@ -65,7 +67,8 @@ class RefundsRequest extends AbstractRequest
 
     /**
      * @param array $data
-     * @return ResponseInterface|MethodsResponse
+     *
+     * @return MethodsResponse|ResponseInterface
      */
     public function sendData($data): ResponseInterface
     {
@@ -82,19 +85,19 @@ class RefundsRequest extends AbstractRequest
     private function validateRefundsArray(): void
     {
         $refunds = $this->getParameter('refunds');
-        if (is_null($refunds) || empty($refunds)) {
-            throw new InvalidRequestException("The parameter `refunds` can not be empty");
+        if (null === $refunds || empty($refunds)) {
+            throw new InvalidRequestException('The parameter `refunds` can not be empty');
         }
 
         $requiredFields = ['orderId', 'sessionId', 'amount'];
 
         foreach ($refunds as $key => $refund) {
             if (! is_array($refund)) {
-                throw new InvalidRequestException("Values in `refunds` need to be an array");
+                throw new InvalidRequestException('Values in `refunds` need to be an array');
             }
             foreach ($requiredFields as $requiredField) {
                 if (! array_key_exists($requiredField, $refund)) {
-                    throw new InvalidRequestException("The $requiredField parameter is required in index $key of `refunds` array");
+                    throw new InvalidRequestException("The {$requiredField} parameter is required in index {$key} of `refunds` array");
                 }
             }
         }

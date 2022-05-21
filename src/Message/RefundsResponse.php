@@ -33,7 +33,7 @@ class RefundsResponse extends AbstractResponse
 
     public function getCode(): int
     {
-        if (! is_null($this->getResponseCode())) {
+        if (null !== $this->getResponseCode()) {
             return $this->getResponseCode();
         }
 

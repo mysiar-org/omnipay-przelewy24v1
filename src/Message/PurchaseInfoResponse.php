@@ -32,7 +32,7 @@ class PurchaseInfoResponse extends AbstractResponse
 
     public function getCode(): int
     {
-        if (isset($this->data['responseCode']) && isset($this->data['error']) && strlen($this->data['error']) > 0) {
+        if (isset($this->data['responseCode'], $this->data['error']) && strlen($this->data['error']) > 0) {
             return Response::HTTP_NOT_FOUND;
         }
 
@@ -45,6 +45,7 @@ class PurchaseInfoResponse extends AbstractResponse
 
     /**
      * @param string[] $data
+     *
      * @return string[]
      */
     private function formatInfo(array $data): array
@@ -61,8 +62,7 @@ class PurchaseInfoResponse extends AbstractResponse
         $formatted = $this->replaceInfoKeys($formatted, 'clientName', 'name');
         $formatted = $this->replaceInfoKeys($formatted, 'clientAddress', 'address');
         $formatted = $this->replaceInfoKeys($formatted, 'clientCity', 'city');
-        $formatted = $this->replaceInfoKeys($formatted, 'clientPostcode', 'postcode');
 
-        return $formatted;
+        return $this->replaceInfoKeys($formatted, 'clientPostcode', 'postcode');
     }
 }

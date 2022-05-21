@@ -6,12 +6,12 @@ namespace Omnipay\Przelewy24\Message;
 
 use Omnipay\Common\Message\RequestInterface;
 
-class CardChargeResponse extends AbstractResponse
+class CardCharge3dsResponse extends AbstractResponse
 {
     /**
      * @var null|string
      */
-    private $transactionId;
+    private $transactionId = null;
 
     public function __construct(RequestInterface $request, $data)
     {
