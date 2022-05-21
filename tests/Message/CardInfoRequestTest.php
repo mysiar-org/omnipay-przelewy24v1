@@ -16,7 +16,7 @@ class CardInfoRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CardInfoRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
@@ -31,7 +31,7 @@ class CardInfoRequestTest extends TestCase
         $this->assertSame(1234567890, $data['transactionId']);
     }
 
-    public function testSendInvalidDataFailure()
+    public function testSendInvalidDataFailure(): void
     {
         $this->setMockHttpResponse('CardInfoInvalidDataFailure.txt');
         $response = $this->request->send();
@@ -42,7 +42,7 @@ class CardInfoRequestTest extends TestCase
         $this->assertSame('Wrong input data', $response->getMessage());
     }
 
-    public function testSendAuthFailure()
+    public function testSendAuthFailure(): void
     {
         $this->setMockHttpResponse('CardInfoAuthFailure.txt');
         $response = $this->request->send();
@@ -53,7 +53,7 @@ class CardInfoRequestTest extends TestCase
         $this->assertSame('Incorrect authentication', $response->getMessage());
     }
 
-    public function testSendNotFoundFailure()
+    public function testSendNotFoundFailure(): void
     {
         $this->setMockHttpResponse('CardInfoNotFoundFailure.txt');
         $response = $this->request->send();
@@ -64,7 +64,7 @@ class CardInfoRequestTest extends TestCase
         $this->assertSame('Transaction not exists', $response->getMessage());
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('CardInfoSuccess.txt');
         $response = $this->request->send();

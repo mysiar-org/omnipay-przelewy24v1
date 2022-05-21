@@ -31,6 +31,7 @@ class CardInfoResponse extends AbstractResponse
 
     /**
      * @param string[] $data
+     *
      * @return string[]
      */
     private function formatInfo(array $data): array
@@ -39,8 +40,7 @@ class CardInfoResponse extends AbstractResponse
 
         // replace keys
         $formatted = $this->replaceInfoKeys($formatted, 'cardType', 'brand');
-        $formatted = $this->replaceInfoKeys($formatted, 'cardDate', 'expiry');
 
-        return $formatted;
+        return $this->replaceInfoKeys($formatted, 'cardDate', 'expiry');
     }
 }

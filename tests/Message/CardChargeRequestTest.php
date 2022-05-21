@@ -16,11 +16,11 @@ class CardChargeRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CardChargeRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
-            "token" => "29fa01f8-6bb8-4187-9fb0-ec6e1a62a731",
+            'token' => '29fa01f8-6bb8-4187-9fb0-ec6e1a62a731',
         ]);
     }
 
@@ -31,7 +31,7 @@ class CardChargeRequestTest extends TestCase
         $this->assertSame('29fa01f8-6bb8-4187-9fb0-ec6e1a62a731', $data['token']);
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('CardChargeSuccess.txt');
         /** @var CardChargeResponse $response */
@@ -42,7 +42,7 @@ class CardChargeRequestTest extends TestCase
         $this->assertSame('1234567890', $response->getTransactionId());
     }
 
-    public function testSendAuthFailure()
+    public function testSendAuthFailure(): void
     {
         $this->setMockHttpResponse('CardChargeAuthFailure.txt');
         $response = $this->request->send();
@@ -53,7 +53,7 @@ class CardChargeRequestTest extends TestCase
         $this->assertSame('Incorrect authentication', $response->getMessage());
     }
 
-    public function testSendInvalidDataFailure()
+    public function testSendInvalidDataFailure(): void
     {
         $this->setMockHttpResponse('CardChargeInvalidDataFailure.txt');
         $response = $this->request->send();

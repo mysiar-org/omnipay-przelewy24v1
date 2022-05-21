@@ -12,6 +12,7 @@ use Omnipay\Przelewy24\Message\CardPayRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseInfoRequest;
+use Omnipay\Przelewy24\Message\PurchaseOfflineRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\RefundsRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
@@ -130,6 +131,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param string[] $options
+     *
      * @return AbstractRequest|PurchaseRequest
      */
     public function purchase(array $options = []): PurchaseRequest
@@ -139,6 +141,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param string[] $options
+     *
      * @return AbstractRequest|CompletePurchaseRequest
      */
     public function completePurchase(array $options = []): CompletePurchaseRequest
@@ -168,6 +171,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param string[] $options
+     *
      * @return AbstractRequest|RefundsRequest
      */
     public function refund(array $options = []): RefundsRequest
@@ -177,6 +181,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param string[] $options
+     *
      * @return AbstractRequest|CardPayRequest
      */
     public function cardPay(array $options): CardPayRequest
@@ -186,10 +191,21 @@ class Gateway extends AbstractGateway
 
     /**
      * @param string[] $options
+     *
      * @return AbstractRequest|CardChargeRequest
      */
     public function cardCharge(array $options): CardChargeRequest
     {
         return $this->createRequest(CardChargeRequest::class, $options);
+    }
+
+    /**
+     * @param string[] $options
+     *
+     * @return AbstractRequest|PurchaseOfflineRequest
+     */
+    public function purchaseOffline(array $options): PurchaseOfflineRequest
+    {
+        return $this->createRequest(PurchaseOfflineRequest::class, $options);
     }
 }

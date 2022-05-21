@@ -16,15 +16,15 @@ class CardPayRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CardPayRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
-            "transactionId" => "29fa01f8-6bb8-4187-9fb0-ec6e1a62a731",
-            "number" => "9010100052000004",
-            "expiry" => "0535",
-            "cvv" => "1234",
-            "name" => "Franek Dolas",
+            'transactionId' => '29fa01f8-6bb8-4187-9fb0-ec6e1a62a731',
+            'number' => '9010100052000004',
+            'expiry' => '0535',
+            'cvv' => '1234',
+            'name' => 'Franek Dolas',
         ]);
     }
 
@@ -39,7 +39,7 @@ class CardPayRequestTest extends TestCase
         $this->assertSame('Franek Dolas', $data['clientName']);
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('CardPaySuccess.txt');
         /** @var CardPayResponse $response */
@@ -52,7 +52,7 @@ class CardPayRequestTest extends TestCase
         $this->assertSame('https://this-is-redirect-url.com', $response->getRedirectUrl());
     }
 
-    public function testSendAuthFailure()
+    public function testSendAuthFailure(): void
     {
         $this->setMockHttpResponse('CardPayAuthFailure.txt');
         $response = $this->request->send();
@@ -63,7 +63,7 @@ class CardPayRequestTest extends TestCase
         $this->assertSame('Incorrect authentication', $response->getMessage());
     }
 
-    public function testSendInvalidDataFailure()
+    public function testSendInvalidDataFailure(): void
     {
         $this->setMockHttpResponse('CardPayInvalidDataFailure.txt');
         $response = $this->request->send();
@@ -74,7 +74,7 @@ class CardPayRequestTest extends TestCase
         $this->assertSame('Invalid input data', $response->getMessage());
     }
 
-    public function testSendUnableToPayFailure()
+    public function testSendUnableToPayFailure(): void
     {
         $this->setMockHttpResponse('CardPayUnableToPayFailure.txt');
         $response = $this->request->send();

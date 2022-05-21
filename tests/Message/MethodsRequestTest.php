@@ -16,11 +16,11 @@ class MethodsRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new MethodsRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
-            "lang" => "en",
+            'lang' => 'en',
         ]);
     }
 
@@ -62,7 +62,7 @@ class MethodsRequestTest extends TestCase
         $this->assertSame('unavailable', $method['availabilityHours']['sunday']);
     }
 
-    public function testSendAuthFailure()
+    public function testSendAuthFailure(): void
     {
         $this->setMockHttpResponse('MethodsAuthFailure.txt');
         $response = $this->request->send();
@@ -73,7 +73,7 @@ class MethodsRequestTest extends TestCase
         $this->assertSame('Incorrect authentication', $response->getMessage());
     }
 
-    public function testSendNotFoundFailure()
+    public function testSendNotFoundFailure(): void
     {
         $this->setMockHttpResponse('MethodsNotFoundFailure.txt');
         $response = $this->request->send();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
@@ -7,9 +9,6 @@ use Omnipay\Przelewy24\Message\RefundsRequest;
 use Omnipay\Przelewy24\Message\RefundsResponse;
 use Omnipay\Tests\TestCase;
 
-/**
- * @group unit
- */
 class RefundsRequestTest extends TestCase
 {
     private const REQUEST_DATA = [
@@ -46,23 +45,23 @@ class RefundsRequestTest extends TestCase
     ): void {
         $data = [];
 
-        if (! is_null($requestId)) {
+        if (null !== $requestId) {
             $data['requestId'] = $requestId;
         }
 
         $data['refunds'] = $refunds;
 
-        if (! is_null($refundsUuid)) {
+        if (null !== $refundsUuid) {
             $data['refundsUuid'] = $refundsUuid;
         }
 
-        if (! is_null($urlStatus)) {
+        if (null !== $urlStatus) {
             $data['urlStatus'] = $urlStatus;
         }
 
         $this->request->initialize($data);
 
-        if (! is_null($expectedExceptionMessage)) {
+        if (null !== $expectedExceptionMessage) {
             $this->expectException(InvalidRequestException::class);
             $this->expectExceptionMessage($expectedExceptionMessage);
         }

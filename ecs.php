@@ -22,6 +22,7 @@ return static function (ECSConfig $ecsConfig): void {
         ]]);
 
     $ecsConfig->import(SetList::SPACES);
+    $ecsConfig->import(SetList::STRICT);
     $ecsConfig->import(SetList::ARRAY);
     $ecsConfig->import(SetList::DOCBLOCK);
     $ecsConfig->import(SetList::PSR_12);
