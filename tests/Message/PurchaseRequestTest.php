@@ -18,7 +18,7 @@ class PurchaseRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $card = new CreditCard([
             'email' => 'franek@dolas.com',
@@ -42,7 +42,7 @@ class PurchaseRequestTest extends TestCase
         ]);
     }
 
-    public function channelProvider()
+    public function channelProvider(): array
     {
         return [
             [Gateway::P24_CHANNEL_ALL],
@@ -52,8 +52,10 @@ class PurchaseRequestTest extends TestCase
 
     /**
      * @dataProvider channelProvider
+     *
+     * @param mixed $channel
      */
-    public function testGetData($channel)
+    public function testGetData($channel): void
     {
         $card = new CreditCard([
             'email' => 'franek@dolas.com',
@@ -78,12 +80,12 @@ class PurchaseRequestTest extends TestCase
 
         $data = $this->request->getData();
 
-        $this->assertSame("42", $data['sessionId']);
+        $this->assertSame('42', $data['sessionId']);
         $this->assertSame(1266, $data['amount']);
-        $this->assertSame("PLN", $data['currency']);
+        $this->assertSame('PLN', $data['currency']);
         $this->assertSame('Transaction Description', $data['description']);
-        $this->assertSame("franek@dolas.com", $data['email']);
-        $this->assertSame("PL", $data['country']);
+        $this->assertSame('franek@dolas.com', $data['email']);
+        $this->assertSame('PL', $data['country']);
         $this->assertSame('https://www.example.com/return', $data['urlReturn']);
         $this->assertSame('https://www.example.com/notify', $data['urlStatus']);
         $this->assertSame('15276e08cc84868619e1054ccf15d638337cae2bced6cb5a48bb799a3b52144692bce63408db85c84a6ca0461a999885', $data['sign']);
@@ -96,7 +98,7 @@ class PurchaseRequestTest extends TestCase
         }
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');
         $response = $this->request->send();
@@ -115,7 +117,7 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('', $response->getMessage());
     }
 
-    public function testSendSignatureFailure()
+    public function testSendSignatureFailure(): void
     {
         $this->setMockHttpResponse('PurchaseSignatureFailure.txt');
         $response = $this->request->send();

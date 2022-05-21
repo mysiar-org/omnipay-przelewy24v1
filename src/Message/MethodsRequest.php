@@ -29,7 +29,8 @@ class MethodsRequest extends AbstractRequest
 
     /**
      * @param string[] $data
-     * @return ResponseInterface|MethodsResponse
+     *
+     * @return MethodsResponse|ResponseInterface
      */
     public function sendData($data): ResponseInterface
     {

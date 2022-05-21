@@ -24,16 +24,32 @@ abstract class AbstractResponse extends BaseAbstractResponse
             return (int) $this->data['code'];
         }
 
+        if (
+            ! isset($this->data['code'])
+            && isset($this->data['responseCode'])
+            && 0 !== (int) $this->data['responseCode']
+        ) {
+            return (int) $this->data['responseCode'];
+        }
+
         return Response::HTTP_OK;
     }
 
     /**
-     * @return array|string|null
+     * @return null|array|string
      */
     public function getMessage()
     {
         if (isset($this->data['error'])) {
             return $this->data['error'];
+        }
+
+        if (
+            Response::HTTP_NOT_FOUND === $this->getCode()
+            && isset($this->data['data'])
+            && ! is_array($this->data['data'])
+            ) {
+            return $this->data['data'];
         }
 
         return '';
@@ -43,7 +59,7 @@ abstract class AbstractResponse extends BaseAbstractResponse
     {
         $code = $this->getCode();
 
-        return in_array($code, [Response::HTTP_CREATED, Response::HTTP_OK]);
+        return in_array($code, [Response::HTTP_CREATED, Response::HTTP_OK], true);
     }
 
     protected function getAmountFromInternal(int $amount): string
@@ -53,6 +69,7 @@ abstract class AbstractResponse extends BaseAbstractResponse
 
     /**
      * @param string[] $data
+     *
      * @return string[]
      */
     protected function replaceInfoKeys(array $data, string $oldKey, string $newKey): array

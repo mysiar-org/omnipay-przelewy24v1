@@ -9,6 +9,7 @@ use Omnipay\Przelewy24\Message\CardPayRequest;
 use Omnipay\Przelewy24\Message\CompletePurchaseRequest;
 use Omnipay\Przelewy24\Message\MethodsRequest;
 use Omnipay\Przelewy24\Message\PurchaseInfoRequest;
+use Omnipay\Przelewy24\Message\PurchaseOfflineRequest;
 use Omnipay\Przelewy24\Message\PurchaseRequest;
 use Omnipay\Przelewy24\Message\RefundsRequest;
 use Omnipay\Przelewy24\Message\TestAccessRequest;
@@ -31,7 +32,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_return_the_name()
+    public function itShouldReturnTheName()
     {
         $this->assertSame('Przelewy24', $this->gateway->getName());
     }
@@ -39,7 +40,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_return_default_parameters()
+    public function itShouldReturnDefaultParameters()
     {
         $defaultParameters = $this->gateway->getDefaultParameters();
         $this->assertSame('', $defaultParameters['merchantId']);
@@ -53,7 +54,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_merchant_id()
+    public function itShouldSetAndGetMerchantId()
     {
         $merchantId = '42';
 
@@ -64,7 +65,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_pos_id()
+    public function itShouldSetAndGetPosId()
     {
         $posId = '13';
 
@@ -75,7 +76,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_crc()
+    public function itShouldSetAndGetCrc()
     {
         $crc = '1288348798';
 
@@ -86,7 +87,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_report_key()
+    public function itShouldSetAndGetReportKey()
     {
         $crc = '6c2f6d86-3091-4291-b1e4-2568492605e4';
 
@@ -97,7 +98,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_channel()
+    public function itShouldSetAndGetChannel()
     {
         $channel = 32;
 
@@ -108,7 +109,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_language()
+    public function itShouldSetAndGetLanguage()
     {
         $language = 'pl';
         $this->gateway->setLanguage($language);
@@ -118,7 +119,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_a_test_access()
+    public function itShouldCreateATestAccess()
     {
         $request = $this->gateway->testAccess();
         $this->assertInstanceOf(TestAccessRequest::class, $request);
@@ -127,7 +128,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_a_methods()
+    public function itShouldCreateAMethods()
     {
         $request = $this->gateway->methods();
         $this->assertInstanceOf(MethodsRequest::class, $request);
@@ -136,7 +137,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_a_purchase()
+    public function itShouldCreateAPurchase()
     {
         $request = $this->gateway->purchase([
             'amount' => '10.00',
@@ -148,7 +149,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_amount_on_purchase()
+    public function itShouldSetAndGetAmountOnPurchase()
     {
         $request = $this->gateway->purchase([
             'amount' => '1000',
@@ -160,7 +161,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_set_and_get_shipping_on_purchase()
+    public function itShouldSetAndGetShippingOnPurchase()
     {
         $request = $this->gateway->purchase([
             'amount' => '1000',
@@ -172,7 +173,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_a_complete_purchase()
+    public function itShouldCreateACompletePurchase()
     {
         $request = $this->gateway->completePurchase([
             'amount' => '10.00',
@@ -185,7 +186,7 @@ class GatewayTest extends GatewayTestCase
      * @test
      * @dataProvider refund_data_provider
      */
-    public function it_should_create_a_refund(
+    public function itShouldCreateARefund(
         string $requestId,
         array $refunds,
         string $refundsUuid,
@@ -211,7 +212,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_a_purchase_info()
+    public function itShouldCreateAPurchaseInfo()
     {
         $request = $this->gateway->purchaseInfo('session-id');
         $this->assertInstanceOf(PurchaseInfoRequest::class, $request);
@@ -221,7 +222,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_card_info()
+    public function itShouldCreateCardInfo()
     {
         $request = $this->gateway->cardInfo('transaction-id');
         $this->assertInstanceOf(CardInfoRequest::class, $request);
@@ -230,7 +231,7 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_card_pay()
+    public function itShouldCreateCardPay()
     {
         $request = $this->gateway->cardPay([]);
         $this->assertInstanceOf(CardPayRequest::class, $request);
@@ -239,10 +240,22 @@ class GatewayTest extends GatewayTestCase
     /**
      * @test
      */
-    public function it_should_create_card_charge()
+    public function itShouldCreateCardCharge()
     {
         $request = $this->gateway->cardCharge([]);
         $this->assertInstanceOf(CardChargeRequest::class, $request);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldCreatePurchaseOffline()
+    {
+        $request = $this->gateway->purchaseOffline([
+            'token' => 'token-abc',
+        ]);
+        $this->assertInstanceOf(PurchaseOfflineRequest::class, $request);
+        $this->assertSame('token-abc', $request->getToken());
     }
 
     public function refund_data_provider(): array

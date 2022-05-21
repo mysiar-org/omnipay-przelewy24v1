@@ -12,12 +12,12 @@ class CardPayResponse extends AbstractResponse
     /**
      * @var null|string
      */
-    private $transactionId = null;
+    private $transactionId;
 
     /**
      * @var null
      */
-    private $redirectUrl = null;
+    private $redirectUrl;
 
     public function __construct(RequestInterface $request, $data)
     {

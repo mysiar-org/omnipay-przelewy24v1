@@ -4,63 +4,64 @@ declare(strict_types=1);
 
 namespace Message;
 
-use Omnipay\Przelewy24\Message\CardChargeRequest;
-use Omnipay\Przelewy24\Message\CardChargeResponse;
+use Omnipay\Przelewy24\Message\TestAccessRequest;
+use Omnipay\Przelewy24\Message\TestAccessResponse;
 use Omnipay\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class CardChargeRequestTest extends TestCase
+class TestAccessRequestTest extends TestCase
 {
     /**
-     * @var CardChargeRequest
+     * @var TestAccessRequest
      */
     private $request;
 
     public function setUp(): void
     {
-        $this->request = new CardChargeRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize([
-            'token' => '29fa01f8-6bb8-4187-9fb0-ec6e1a62a731',
-        ]);
+        $this->request = new TestAccessRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request->initialize([]);
     }
 
     public function testGetData(): void
     {
         $data = $this->request->getData();
 
-        $this->assertSame('29fa01f8-6bb8-4187-9fb0-ec6e1a62a731', $data['token']);
+        $this->assertSame([], $data);
     }
 
     public function testSendSuccess(): void
     {
-        $this->setMockHttpResponse('CardChargeSuccess.txt');
-        /** @var CardChargeResponse $response */
+        $this->setMockHttpResponse('TestAccessSuccess.txt');
         $response = $this->request->send();
 
-        $this->assertInstanceOf(CardChargeResponse::class, $response);
+        $this->assertInstanceOf(TestAccessResponse::class, $response);
         $this->assertTrue($response->isSuccessful());
-        $this->assertSame('1234567890', $response->getTransactionId());
+        $this->assertSame(Response::HTTP_OK, $response->getCode());
+        $this->assertSame('', $response->getMessage());
+        $this->assertTrue($response->getTest());
     }
 
     public function testSendAuthFailure(): void
     {
-        $this->setMockHttpResponse('CardChargeAuthFailure.txt');
+        $this->setMockHttpResponse('TestAccessAuthFailure.txt');
         $response = $this->request->send();
 
-        $this->assertInstanceOf(CardChargeResponse::class, $response);
+        $this->assertInstanceOf(TestAccessResponse::class, $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getCode());
         $this->assertSame('Incorrect authentication', $response->getMessage());
+        $this->assertFalse($response->getTest());
     }
 
     public function testSendInvalidDataFailure(): void
     {
-        $this->setMockHttpResponse('CardChargeInvalidDataFailure.txt');
+        $this->setMockHttpResponse('TestAccessInvalidDataFailure.txt');
         $response = $this->request->send();
 
-        $this->assertInstanceOf(CardChargeResponse::class, $response);
+        $this->assertInstanceOf(TestAccessResponse::class, $response);
         $this->assertFalse($response->isSuccessful());
         $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getCode());
         $this->assertSame('Invalid input data', $response->getMessage());
+        $this->assertFalse($response->getTest());
     }
 }

@@ -16,7 +16,7 @@ class PurchaseInfoRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new PurchaseInfoRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
@@ -31,7 +31,7 @@ class PurchaseInfoRequestTest extends TestCase
         $this->assertSame('1234567890', $data['sessionId']);
     }
 
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('PurchaseInfoSuccess.txt');
         $response = $this->request->send();
@@ -51,8 +51,8 @@ class PurchaseInfoRequestTest extends TestCase
         $this->assertSame(154, $response->getInfo()['paymentMethod']);
         $this->assertSame('transaction description', $response->getInfo()['description']);
         $this->assertSame(0, $response->getInfo()['batchId']);
-        $this->assertSame("12", $response->getInfo()['fee']);
-        $this->assertSame("P24-K12-B34-H56", $response->getInfo()['statement']);
+        $this->assertSame('12', $response->getInfo()['fee']);
+        $this->assertSame('P24-K12-B34-H56', $response->getInfo()['statement']);
         $this->assertSame('franek@dolas.com', $response->getInfo()['email']);
         $this->assertSame('Franek Dolas', $response->getInfo()['name']);
         $this->assertSame('Kościuszki 12', $response->getInfo()['address']);
@@ -60,7 +60,7 @@ class PurchaseInfoRequestTest extends TestCase
         $this->assertSame('30-611', $response->getInfo()['postcode']);
     }
 
-    public function testSendAuthFailure()
+    public function testSendAuthFailure(): void
     {
         $this->setMockHttpResponse('PurchaseInfoAuthFailure.txt');
         $response = $this->request->send();
@@ -71,7 +71,7 @@ class PurchaseInfoRequestTest extends TestCase
         $this->assertSame('Incorrect authentication', $response->getMessage());
     }
 
-    public function testSendInvalidDataFailure()
+    public function testSendInvalidDataFailure(): void
     {
         $this->setMockHttpResponse('PurchaseInfoInvalidDataFailure.txt');
         $response = $this->request->send();
