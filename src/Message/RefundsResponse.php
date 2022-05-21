@@ -21,7 +21,7 @@ class RefundsResponse extends AbstractResponse
         }
     }
 
-    public function getRefunds(): array
+    public function getRefunds(): ?array
     {
         return $this->refunds;
     }
