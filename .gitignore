@@ -2,3 +2,4 @@ vendor
 composer.lock
 tests-api/.env
 var/
+.phpunit.result.cache
