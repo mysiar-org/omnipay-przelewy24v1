@@ -7,7 +7,7 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
-return static function (ECSConfig $ecsConfig): void {
+return static function(ECSConfig $ecsConfig): void {
     $parameters = $ecsConfig->parameters();
     $parameters->set(Option::PATHS, [
         __DIR__ . '/src',

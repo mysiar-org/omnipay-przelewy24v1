@@ -16,7 +16,7 @@ class CardCharge3dsRequestTest extends TestCase
      */
     private $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CardCharge3dsRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
