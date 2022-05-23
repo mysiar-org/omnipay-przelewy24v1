@@ -132,6 +132,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->methods();
         $this->assertInstanceOf(MethodsRequest::class, $request);
+        $this->assertSame('en', $request->getLang());
     }
 
     /**
@@ -214,7 +215,9 @@ class GatewayTest extends GatewayTestCase
      */
     public function itShouldCreateAPurchaseInfo()
     {
-        $request = $this->gateway->purchaseInfo('session-id');
+        $request = $this->gateway->purchaseInfo([
+            'sessionId' => 'session-id',
+        ]);
         $this->assertInstanceOf(PurchaseInfoRequest::class, $request);
         $this->assertSame('session-id', $request->getSessionId());
     }
@@ -224,8 +227,11 @@ class GatewayTest extends GatewayTestCase
      */
     public function itShouldCreateCardInfo()
     {
-        $request = $this->gateway->cardInfo('transaction-id');
+        $request = $this->gateway->cardInfo([
+            'transactionId' => 'transaction-id',
+        ]);
         $this->assertInstanceOf(CardInfoRequest::class, $request);
+        $this->assertSame('transaction-id', $request->getTransactionId());
     }
 
     /**

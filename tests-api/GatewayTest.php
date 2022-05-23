@@ -13,7 +13,7 @@ class GatewayTest extends TestCase
 {
     private $gateway;
 
-    public function setUp()
+    public function setUp(): void
     {
         $settings = [
             'merchantId' => getenv('P24V1_MERCHANT_ID'),
@@ -107,7 +107,9 @@ class GatewayTest extends TestCase
     public function testPurchaseInfo(): void
     {
         $sessionId = '20c62d6b-5ff0-46a0-97eb-eea0dd5b4a93'; // real existing session
-        $response = $this->gateway->purchaseInfo($sessionId)->send();
+        $response = $this->gateway->purchaseInfo([
+            'sessionId' => $sessionId,
+        ])->send();
 
         VarDumper::dump($response->getCode());
         VarDumper::dump($response->getInfo());
@@ -155,7 +157,9 @@ class GatewayTest extends TestCase
     {
         $transactionId = '317229535';
         $this->markTestSkipped('Comment this out if you have payment with credit card');
-        $response = $this->gateway->cardInfo($transactionId)->send();
+        $response = $this->gateway->cardInfo([
+            'transactionId' => $transactionId,
+        ])->send();
         dump($response->getCode());
         dump($response->getInfo());
     }
