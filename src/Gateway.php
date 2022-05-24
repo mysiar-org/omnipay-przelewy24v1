@@ -122,11 +122,11 @@ class Gateway extends AbstractGateway
     /**
      * @return AbstractRequest|MethodsRequest
      */
-    public function methods(string $lang = 'en'): MethodsRequest
+    public function methods(array $options = [
+        'lang' => 'en',
+    ]): MethodsRequest
     {
-        return $this->createRequest(MethodsRequest::class, [
-            'lang' => $lang,
-        ]);
+        return $this->createRequest(MethodsRequest::class, $options);
     }
 
     /**
@@ -152,21 +152,17 @@ class Gateway extends AbstractGateway
     /**
      * @return AbstractRequest|PurchaseInfoRequest
      */
-    public function purchaseInfo(string $sessionId): PurchaseInfoRequest
+    public function purchaseInfo(array $options = []): PurchaseInfoRequest
     {
-        return $this->createRequest(PurchaseInfoRequest::class, [
-            'sessionId' => $sessionId,
-        ]);
+        return $this->createRequest(PurchaseInfoRequest::class, $options);
     }
 
     /**
      * @return AbstractRequest|CardInfoRequest
      */
-    public function cardInfo(string $transactionId): CardInfoRequest
+    public function cardInfo(array $options = []): CardInfoRequest
     {
-        return $this->createRequest(CardInfoRequest::class, [
-            'transactionId' => $transactionId,
-        ]);
+        return $this->createRequest(CardInfoRequest::class, $options);
     }
 
     /**
@@ -184,7 +180,7 @@ class Gateway extends AbstractGateway
      *
      * @return AbstractRequest|CardPayRequest
      */
-    public function cardPay(array $options): CardPayRequest
+    public function cardPay(array $options = []): CardPayRequest
     {
         return $this->createRequest(CardPayRequest::class, $options);
     }
@@ -194,7 +190,7 @@ class Gateway extends AbstractGateway
      *
      * @return AbstractRequest|CardChargeRequest
      */
-    public function cardCharge(array $options): CardChargeRequest
+    public function cardCharge(array $options = []): CardChargeRequest
     {
         return $this->createRequest(CardChargeRequest::class, $options);
     }
@@ -204,7 +200,7 @@ class Gateway extends AbstractGateway
      *
      * @return AbstractRequest|PurchaseOfflineRequest
      */
-    public function purchaseOffline(array $options): PurchaseOfflineRequest
+    public function purchaseOffline(array $options = []): PurchaseOfflineRequest
     {
         return $this->createRequest(PurchaseOfflineRequest::class, $options);
     }

@@ -35,7 +35,7 @@
     "php": "^7.2|^8.0"
   },
   "require-dev": {
-    "omnipay/tests": "^3",
+    "omnipay/tests": "^4",
     "symplify/easy-coding-standard": "^10.2",
     "symfony/var-dumper": "^5.4"
   }
