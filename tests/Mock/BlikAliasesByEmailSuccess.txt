@@ -11,13 +11,9 @@ Cache-Control: no-cache, no-store
 Strict-Transport-Security: max-age=31556926; includeSubDomains
 
 {
-  "data": {
-    "refId": "ref-id",
-    "bin": 0,
-    "mask": "xxxx-xxxx-xxxx-1234",
-    "cardType": "VISA",
-    "cardDate": "202505",
-    "hash": "e0dfeab6-39c2-42cb-b96e-fb0d6d48d503"
-  },
-  "responseCode": 0
+  "data": [
+    {"type": "blik200"},
+    {"type": "blik200"}
+  ],
+  "responseCode": 200
 }

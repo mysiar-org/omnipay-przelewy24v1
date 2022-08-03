@@ -6,6 +6,10 @@ namespace Omnipay\Przelewy24;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Przelewy24\Message\BlikAliasesByEmailCustomRequest;
+use Omnipay\Przelewy24\Message\BlikAliasesByEmailRequest;
+use Omnipay\Przelewy24\Message\BlikChargeByAliasRequest;
+use Omnipay\Przelewy24\Message\BlikChargeByCodeRequest;
 use Omnipay\Przelewy24\Message\CardChargeRequest;
 use Omnipay\Przelewy24\Message\CardInfoRequest;
 use Omnipay\Przelewy24\Message\CardPayRequest;
@@ -203,5 +207,45 @@ class Gateway extends AbstractGateway
     public function purchaseOffline(array $options = []): PurchaseOfflineRequest
     {
         return $this->createRequest(PurchaseOfflineRequest::class, $options);
+    }
+
+    /**
+     * @param string[] $options
+     *
+     * @return AbstractRequest|BlikAliasesByEmailRequest
+     */
+    public function blikGetAliasesByEmail(array $options = []): BlikAliasesByEmailRequest
+    {
+        return $this->createRequest(BlikAliasesByEmailRequest::class, $options);
+    }
+
+    /**
+     * @param string[] $options
+     *
+     * @return AbstractRequest|BlikAliasesByEmailCustomRequest
+     */
+    public function blikGetAliasesByEmailCustom(array $options = []): BlikAliasesByEmailCustomRequest
+    {
+        return $this->createRequest(BlikAliasesByEmailCustomRequest::class, $options);
+    }
+
+    /**
+     * @param string[] $options
+     *
+     * @return AbstractRequest|BlikChargeByCodeRequest
+     */
+    public function blikChargeByCode(array $options = []): BlikChargeByCodeRequest
+    {
+        return $this->createRequest(BlikChargeByCodeRequest::class, $options);
+    }
+
+    /**
+     * @param string[] $options
+     *
+     * @return AbstractRequest|BlikChargeByAliasRequest
+     */
+    public function blikChargeByAlias(array $options = []): BlikChargeByAliasRequest
+    {
+        return $this->createRequest(BlikChargeByAliasRequest::class, $options);
     }
 }
