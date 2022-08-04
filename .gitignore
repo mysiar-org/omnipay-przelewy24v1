@@ -3,3 +3,6 @@ composer.lock
 tests-api/.env
 var/
 .phpunit.result.cache
+.docker
+index.php
+.idea
