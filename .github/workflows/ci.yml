@@ -7,6 +7,7 @@ on:
     branches:
       - master
       - dev
+      - main
 
 jobs:
   build:
@@ -21,28 +22,40 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: xdebug
           tools: composer
+
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Install Composer dependencies
         run: composer install
+
+      - name: Prepare PHPUnit config file for PHP < 8
+        run: cp phpunit.xml.dist8 phpunit.xml.dist
+        if: "matrix.php < 8"
+
       - name: PHPUnit tests (PHP ${{ matrix.php }})
         run: php${{ matrix.php }} ./vendor/bin/phpunit --testdox --verbose --stop-on-failure
+
       - uses: symfonycorp/security-checker-action@v3
+
       - name: Coding standard (PHP ${{ matrix.php }})
         run: php${{ matrix.php }} ./vendor/bin/ecs check src tests
+
       - name: Code coverage
         run: php${{ matrix.php }} -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=var/coverage.xml
+
       - name: Fix code coverage paths
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' var/coverage.xml
-      - name: Analyze with SonarQube
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
-      # - uses: sonarsource/sonarqube-quality-gate-action@master
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+#      - name: Analyze with SonarQube
+#        uses: sonarsource/sonarqube-scan-action@master
+#        env:
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#      # If you wish to fail your job when the Quality Gate is red, uncomment the
+#      # following lines. This would typically be used to fail a deployment.
+#      # - uses: sonarsource/sonarqube-quality-gate-action@master
+#      #   timeout-minutes: 5
+#      #   env:
+#      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
