@@ -72,7 +72,7 @@ class RefundsRequest extends AbstractRequest
      */
     public function sendData($data): ResponseInterface
     {
-        $httpResponse = $this->sendRequest('GET', 'transaction/refund', $data);
+        $httpResponse = $this->sendRequest('POST', 'transaction/refund', $data);
 
         $responseData = json_decode($httpResponse->getBody()->getContents(), true);
 
