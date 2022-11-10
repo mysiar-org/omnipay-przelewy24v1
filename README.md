@@ -9,17 +9,6 @@
 [![PHP Version Require](http://poser.pugx.org/mysiar/omnipay-przelewy24v1/require/php)](https://packagist.org/packages/mysiar/omnipay-przelewy24v1)
 [![GitHub stars](https://img.shields.io/github/stars/mysiar-org/omnipay-przelewy24v1)](https://github.com/mysiar-org/omnipay-przelewy24v1/stargazers)
 
-[![Coverage](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=coverage&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Maintainability Rating](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=sqale_rating&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Quality Gate Status](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=alert_status&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Reliability Rating](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=reliability_rating&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Security Rating](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=security_rating&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Bugs](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=bugs&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Code Smells](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=code_smells&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Duplicated Lines (%)](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=duplicated_lines_density&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Lines of Code](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=ncloc&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Technical Debt](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=sqale_index&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
-[![Vulnerabilities](https://sq.mysiar.dev/api/project_badges/measure?project=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc&metric=vulnerabilities&token=e3ee022dee8869d296c924b840b66e0aefb86f62)](https://sq.mysiar.dev/dashboard?id=mysiar-org_omnipay-przelewy24v1_AYKYVbX_XdtDi-mnE6gc)
 
 ## API endpoints implemented
 
