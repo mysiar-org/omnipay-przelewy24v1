@@ -23,7 +23,6 @@ jobs:
           extensions: bcmath
           coverage: xdebug
           tools: composer
-          if: "matrix.php >= 8"
           ini-values: opcache.enable_cli=1, opcache.jit=tracing, opcache.jit_buffer_size=64M
 
       - uses: actions/checkout@v4
