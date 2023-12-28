@@ -44,10 +44,7 @@ jobs:
       - name: Coding standard (PHP ${{ matrix.php }})
         run: php${{ matrix.php }} ./vendor/bin/ecs check src tests
 
-      - name: Code coverage - clover
-        run: php${{ matrix.php }} -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=var/coverage.xml
-
-      - name: Code coverage - text
+      - name: Code coverage
         run: php${{ matrix.php }} -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-text
 
       - name: Fix code coverage paths
