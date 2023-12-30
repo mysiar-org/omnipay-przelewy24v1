@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        php: [ '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
+        php: [ '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4' ]
     steps:
       - name: Setup PHP (PHP ${{ matrix.php }})
         uses: shivammathur/setup-php@v2
@@ -23,8 +23,9 @@ jobs:
           extensions: bcmath
           coverage: xdebug
           tools: composer
+          ini-values: opcache.enable_cli=1, opcache.jit=tracing, opcache.jit_buffer_size=64M
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -32,7 +33,7 @@ jobs:
         run: composer install
 
       - name: Prepare PHPUnit config file for PHP < 8
-        run: cp phpunit.xml.dist8 phpunit.xml.dist
+        run: cp phpunit.xml.dist7 phpunit.xml.dist
         if: "matrix.php < 8"
 
       - name: PHPUnit tests (PHP ${{ matrix.php }})
@@ -44,19 +45,7 @@ jobs:
         run: php${{ matrix.php }} ./vendor/bin/ecs check src tests
 
       - name: Code coverage
-        run: php${{ matrix.php }} -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=var/coverage.xml
+        run: php${{ matrix.php }} -d xdebug.mode=coverage ./vendor/bin/phpunit
 
       - name: Fix code coverage paths
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' var/coverage.xml
-
-#      - name: Analyze with SonarQube
-#        uses: sonarsource/sonarqube-scan-action@master
-#        env:
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-#      # If you wish to fail your job when the Quality Gate is red, uncomment the
-#      # following lines. This would typically be used to fail a deployment.
-#      # - uses: sonarsource/sonarqube-quality-gate-action@master
-#      #   timeout-minutes: 5
-#      #   env:
-#      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

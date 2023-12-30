@@ -17,6 +17,7 @@
         <report>
             <clover outputFile="var/coverage.xml"/>
             <html outputDirectory="var/phpunit" lowUpperBound="50" highLowerBound="85"/>
+            <text outputFile="php://stdout"/>
         </report>
     </coverage>
     <testsuites>
